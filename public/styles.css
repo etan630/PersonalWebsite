@@ -1,0 +1,510 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Libre Baskerville', serif;
+    color: #4a4a47;
+    background-color: #fdfaf6; /* Creamy off-white */
+    text-align: center;
+}
+
+html, body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styling */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #e6e3df; /* Muted gray */
+    border-bottom: 1px solid #b38b6d; /* Warm beige accent */
+    padding: 15px 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    color: #3e3e3e;
+    font-size: 1.2em;
+    text-transform: capitalize;
+}
+
+nav ul li a.active {
+    color: #8da58e; /* Sage green highlight */
+    border-bottom: 2px solid #8da58e;
+}
+
+nav ul li a:hover {
+    color: #b38b6d; /* Warm beige */
+    transition: color 0.3s ease;
+}
+
+/* Section styling */
+.section-content {
+    min-height: auto; /* Remove any large height assignments */
+    padding: 50px 0;
+}
+
+
+.main-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f8f4; /* Background matches the light academia theme */
+}
+
+.main-section {
+    background-image: url('/background.png'); /* Adjust the path if necessary */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.main-section h2 {
+    color: #6c675c;
+    background-color: rgba(255, 255, 255, 0.25); /* Semi-opaque white background */
+}
+
+.main-section p {
+    color: #3d3a35;
+    /* background-color: rgba(255, 255, 255, 0.25); /* Semi-opaque white background */
+}
+
+.main-section h1 {
+    color: #4a4a47;
+    letter-spacing: 0.05em;
+    background-color: rgba(255, 255, 255, 0.15); 
+}
+
+
+h1, h2 {
+    color: #4a4a47;
+    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-size: 3.5em;
+    letter-spacing: 0.05em;
+}
+
+h2 {
+    font-size: 2.5em;
+    color: #6c675c;
+}
+
+p {
+    font-family: 'Raleway', sans-serif; /* A softer serif for body text */
+    font-size: 1.2em;
+    color: #6c675c;
+}
+
+.links {
+    margin: 20px 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Social icons for GitHub and LinkedIn */
+.social-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    transition: transform 0.3s;
+}
+
+.social-icon:hover {
+    transform: scale(1.15);
+    filter: brightness(0.8); /* Softens the icon effect */
+}
+
+/* Links within sections */
+.links a {
+    color: #b08663;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.links a:hover {
+    color: #3e3e3e;
+}
+
+.link-highlight {
+    color: #b08663;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-highlight:hover {
+    color: #3e3e3e;
+}
+
+.scroll-down {
+    margin-top: 50px;
+}
+
+.scroll-down a {
+    font-size: 3em;
+    color: #3e3e3e;
+    transition: color 0.3s ease;
+}
+
+.scroll-down a:hover {
+    color: #b08663;
+}
+
+/* Styling the contact section */
+.contact-section {
+    padding: 70px 20px; /* Reduce bottom padding to 0 */
+    background-color: #e0ddd4;
+    margin-bottom: 0px; /* Ensure no additional margin at the bottom */
+}
+
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.contact-item {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    color: #3e3e3e;
+}
+
+.contact-item p {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+.contact-item a {
+    color: #b08663;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-item a:hover {
+    color: #3e3e3e;
+}
+
+/* Contact icon styles */
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    transition: transform 0.3s;
+}
+
+.contact-icon:hover {
+    transform: scale(1.2); /* Hover effect: Slight zoom on icons */
+}
+
+
+/* Contact icon styles */
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    transition: transform 0.3s;
+}
+
+.contact-icon:hover {
+    transform: scale(1.2); /* Hover effect: Slight zoom on icons */
+}
+
+/* Smooth scrolling for navbar */
+nav ul li a {
+    scroll-behavior: smooth;
+}
+
+/* Resume section styling */
+.resume-section {
+    padding: 80px 20px;
+    background-color: #f9f8f4;
+    color: #8da58e;
+}
+
+.resume-section h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #6c675c;
+}
+
+.resume-intro {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3em;
+    color: #6c675c;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Section title styling */
+.section-title {
+    font-size: 1.8em; /* Slightly smaller title */
+    color: #b08663;
+    margin-bottom: 10px; /* Reduced space under the section title */
+    text-align: center;
+}
+
+/* Timeline container */
+.timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Timeline items */
+.timeline-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px; /* Reduced space between timeline items */
+}
+
+.timeline-left {
+    flex: 1;
+    text-align: right;
+    padding-right: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.timeline-left h4 {
+    font-size: 1.4em;
+    color: #3e3e3e;
+}
+
+.timeline-left h5 {
+    font-size: 1.1em;
+    color: #6c675c;
+}
+
+.timeline-right {
+    flex: 2;
+    padding-left: 20px;
+    text-align: left;
+    border-left: 2px solid #ddd;
+}
+
+.timeline-right h3 {
+    font-size: 1.6em;
+    font-family: 'Libre Baskerville', serif;
+    color: #3e3e3e;
+    margin-bottom: 5px;
+}
+
+.timeline-right p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #6c675c;
+    margin-bottom: 15px;
+}
+
+/* Coursework and Skills sections */
+.resume-section-block {
+    margin-top: 20px; /* Reduced margin between sections */
+    margin-bottom: 20px; /* Reduced space between each block */
+    text-align: left;
+}
+
+.resume-section-block h3 {
+    margin-bottom: 10px; /* Adjust this to a smaller value if needed */
+    padding-bottom: 0; /* Remove any unnecessary padding */
+}
+
+.resume-section-block p.section-content {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #3e3e3e;
+    margin-top: 0; /* Remove any top margin */
+    padding: 0;
+    margin-bottom: 0px; /* Reduced margin under content */
+    text-align: center; /* Center the content */
+}
+
+/* About Section Styling */
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+    margin-right: 30px;
+}
+
+.about-pic {
+    width: 100%;
+    max-width: 400px; /* Adjust the width as necessary */
+    border-radius: 10px;
+}
+
+.about-pic {
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.08);
+}
+
+.about-text {
+    flex: 2;
+    text-align: left;
+    color: #4a4a47;
+}
+
+.about-text h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5em;
+    color: #4a4a47;
+}
+
+.about-text p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em;
+    color: #6c675c;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* About Section */
+.about-section {
+    padding: 60px 20px;
+    background-color: #f9f8f4;
+    color: #3e3e3e;
+}
+
+.about-container, .about-lower {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-left, .about-right {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Picture Styling */
+.about-image {
+    text-align: center;
+}
+
+.about-pic {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Intro Text Styling */
+.about-text {
+    text-align: left;
+}
+
+.about-text h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.2em;
+    color: #8da58e;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em;
+    color: #6c675c;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Interests and Hobbies */
+.about-interests {
+    text-align: left;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #6c675c;
+}
+
+/* Slideshow Styling */
+.slideshow-container {
+    position: relative;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.08);
+}
+
+.slide.active {
+    display: block;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 10px 15px;
+    background-color: rgba(235, 232, 228, 0.9); /* Lighter button background */
+    color: #4a4a47; /* Darker text color */
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.prev {
+    left: -30px;
+}
+
+.next {
+    right: -30px;
+}
+
+.prev:hover, .next:hover {
+    background-color: #b38b6d; /* Warm beige hover */
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-container, .about-lower {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-text, .about-interests {
+        text-align: center;
+    }
+}

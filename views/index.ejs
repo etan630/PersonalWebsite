@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erin Tan - Personal Website</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Raleway:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul id="navbar">
+                <li><a href="#home">home</a></li>
+                <li><a href="#about">about</a></li>
+                <li><a href="#resume">resume</a></li>
+                <li><a href="/projects">projects</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="main-section">
+        <p>Hi there, thanks for visiting my website!<br>I would love to <a href="https://www.linkedin.com/in/erinctan/" class="link-highlight">connect</a> with you!<br><br><br></p>
+        <h1>Erin Tan</h1>
+        <div class="links">
+            <!-- Add icons for GitHub and LinkedIn -->
+            <a href="https://github.com/etan630" target="_blank">
+                <img src="/github-icon.png" alt="GitHub Icon" class="social-icon">
+            </a>
+            <a href="https://www.linkedin.com/in/erinctan/" target="_blank">
+                <img src="/linkedin-icon.png" alt="LinkedIn Icon" class="social-icon">
+            </a>
+        </div>
+        <div class="scroll-down">
+            <a href="#about">&#x25BC;</a> <!-- Downward arrow for scroll -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <!-- Left-side: Picture -->
+            <div class="about-left">
+                <div class="about-image">
+                    <img src="/me.jpeg" alt="Picture of Me!" class="about-pic">
+                </div>
+            </div>
+    
+            <!-- Right-side: Intro Text -->
+            <div class="about-right">
+                <div class="about-text">
+                    <h2>Nice to meet you! Let me introduce myself.</h2>
+                    <p>I am currently pursuing my bachelor’s in Computer Science at Georgia Tech.</p>
+                    <p>Before I dive into my academics, I grew up in Medford, Massachusetts. During high school, I was active in my school’s robotics team and proudly served as co-captain of our science team.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="about-lower">
+            <!-- Left-side: Interests and Hobbies -->
+            <div class="about-left">
+                <div class="about-text">
+                    <p>At Georgia Tech, my primary interest lies in the convergence of hardware and software. Engaging in collaborative projects has expanded my understanding of how integrated systems can solve real-world problems.</p>
+                    <p>Outside of academic pursuits, I love baking, cooking, playing the piano, and dancing, particularly K-pop covers.</p>
+                </div>
+            </div>
+    
+            <!-- Right-side: Slideshow -->
+            <div class="about-right">
+                <div class="slideshow-container">
+                    <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+                    <div class="slideshow">
+                        <img src="/food1.jpeg" class="slide" alt="Baked good 1">
+                        <img src="/food2.jpeg" class="slide" alt="Baked good 2">
+                        <img src="/food3.jpeg" class="slide" alt="Baked good 3">
+                        <img src="/food4.jpeg" class="slide" alt="Baked good 4">
+                        <img src="/food5.jpeg" class="slide" alt="Baked good 5">
+                        <img src="/food6.jpeg" class="slide" alt="Baked good 6">
+                        <img src="/food7.jpeg" class="slide" alt="Baked good 7">
+                        <img src="/food8.jpeg" class="slide" alt="Baked good 8">
+                    </div>
+                    <button class="next" onclick="plusSlides(1)">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume-section">
+        <h2>Resume</h2>
+        <p class="resume-intro">Here are my work experiences and education.</p>
+
+        <!-- Work Experience -->
+        <h3 class="section-title">Work Experience</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <h4>Software Engineering Intern</h4>
+                    <h5>May 2024 - December 2024</h5>
+                </div>
+                <div class="timeline-right">
+                    <h3>Humana | Louisville, KY</h3>
+                    <p>As a Software Engineering Intern at Humana, I identified and validated application productivity opportunities. I automated workstream processes using Microsoft Excel and Power Automate, cutting the manual workload by over 20%. I leveraged VBA scripting for detailed data analysis, optimized storage space, and organized a hackathon for over 65 interns, overseeing event grading and the website's development.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <h4>Tutor</h4>
+                    <h5>May 2019 - March 2020</h5>
+                </div>
+                <div class="timeline-right">
+                    <h3>Kumon Math and Reading Center | Malden, MA</h3>
+                    <p>During my time as a Tutor at Kumon, I instructed over 100 students weekly, covering subjects ranging from Algebra I to Calculus II. I also provided detailed assessments on homework assignments, encouraging self-directed learning and helping students enhance their critical thinking skills.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <h3 class="section-title">Education</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <h4>Bachelor Degree</h4>
+                    <h5>June 2023 - Present</h5>
+                </div>
+                <div class="timeline-right">
+                    <h3>Georgia Institute of Technology</h3>
+                    <p>GPA: 3.76/4.00</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <h4>Bachelor Degree</h4>
+                    <h5>August 2022 - May 2023</h5>
+                    <h5>(Transferred)</h5>
+                </div>
+                <div class="timeline-right">
+                    <h3>University of Massachusetts, Lowell</h3>
+                    <p>GPA: 4.00/4.00</p>
+                </div>
+            </div>
+        </div>
+        <!-- Coursework Section -->
+        <div class="resume-section-block">
+            <h3 class="section-title">Coursework</h3>
+            <p class="section-content">
+                Object Oriented Programming, Data Structures, Design and Analysis of Algorithms, Testing & Debugging, Version Control, 
+                Computer Organization and Programming, Objects and Design, Linear Algebra, Calculus I & II, Multivariable Calculus, Physics: Mechanics & Electricity and Magnetism, 
+                Machine Learning, Systems and Network, Intro to Cognitive Science.
+            </p>
+        </div>
+        
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-content contact-section">
+        <h2>I’d love to connect with you.</h2>
+        <p>Let’s get to know each other better.</p>
+
+        <div class="contact-icons">
+            <div class="contact-item">
+                <img src="/email-icon.png" alt="Email icon" class="contact-icon">
+                <p>Email me at<br><a href="mailto:etan61@gatech.edu">etan61@gatech.edu</a></p>
+            </div>
+            <div class="contact-item">
+                <img src="/linkedin-icon.png" alt="LinkedIn icon" class="contact-icon">
+                <p>Let's Connect<br><a href="https://www.linkedin.com/in/erinctan/">LinkedIn</a></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="/script.js"></script>
+</body>
+</html>
