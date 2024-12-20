@@ -508,3 +508,107 @@ nav ul li a {
         text-align: center;
     }
 }
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-item {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0; /* Ensure no extra margin */
+    padding: 0; /* Ensure no extra padding */
+}
+
+.project-header {
+    padding: 20px;
+    cursor: pointer;
+}
+
+.project-image {
+    width: 100%; /* Makes the image span the width of the container */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Ensure it's visible when needed */
+    object-fit: cover; /* Ensures the image fills its container proportionally */
+    margin: 0; /* Remove any extra spacing */
+}
+
+.project-item.expanded .project-image {
+    display: none; /* Hides the image when the project box is expanded */
+}
+
+.project-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; /* Optional rounded corners */
+}
+
+.project-header:hover {
+    background-color: #e6e3df;
+}
+
+.project-expanded {
+    display: none;
+    padding: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.project-item.expanded {
+    grid-column: span 3;
+    grid-row: auto;
+}
+
+.project-item.expanded .project-expanded {
+    display: block;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #8da58e;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background-color: #6c675c;
+}
+
+.dynamic-close-button {
+    position: fixed; /* Stays fixed in the viewport */
+    top: 20px; /* Adjusts the position from the top */
+    right: 20px; /* Adjusts the position from the right */
+    z-index: 1000; /* Ensures it appears above other elements */
+    background-color: #8da58e; /* Sage green */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dynamic-close-button:hover {
+    background-color: #6c675c; /* Darker shade for hover */
+    transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+.hidden {
+    display: none; /* Hides the button when no project is expanded */
+}

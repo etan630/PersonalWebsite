@@ -60,3 +60,64 @@ function showSlides(n) {
     // Show the current slide
     slides[slideIndex].style.display = "block";
 }
+
+// Create a reference to the dynamic close button
+let dynamicCloseButton;
+
+// Initialize the dynamic close button
+function createDynamicCloseButton() {
+    dynamicCloseButton = document.createElement('button');
+    dynamicCloseButton.textContent = 'Close';
+    dynamicCloseButton.classList.add('dynamic-close-button', 'hidden');
+    dynamicCloseButton.addEventListener('click', closeExpandedProject);
+    document.body.appendChild(dynamicCloseButton);
+}
+
+// Function to toggle the expanded project and manage the button
+function toggleProject(projectId) {
+    const projectItem = document.getElementById(projectId);
+    const expanded = document.getElementById(`${projectId}-expanded`);
+
+    if (projectItem.classList.contains('expanded')) {
+        // Collapse the card
+        projectItem.classList.remove('expanded');
+        expanded.style.display = 'none';
+    } else {
+        // Collapse all other cards first
+        document.querySelectorAll('.project-item.expanded').forEach(item => {
+            item.classList.remove('expanded');
+            const itemExpanded = item.querySelector('.project-expanded');
+            if (itemExpanded) itemExpanded.style.display = 'none';
+        });
+
+        // Expand the selected card
+        projectItem.classList.add('expanded');
+        expanded.style.display = 'block';
+    }
+}
+
+
+// Function to close the currently expanded project
+function closeExpandedProject() {
+    const expandedItems = document.querySelectorAll('.project-item.expanded');
+    expandedItems.forEach((item) => item.classList.remove('expanded'));
+    dynamicCloseButton.classList.add('hidden');
+}
+
+// Update the button's position relative to the expanded project
+function updateButtonPosition(projectItem) {
+    const rect = projectItem.getBoundingClientRect();
+    dynamicCloseButton.style.top = `${rect.top + window.scrollY + 10}px`;
+    dynamicCloseButton.style.right = `${window.innerWidth - rect.right + 10}px`;
+}
+
+// Listen for scroll events to update the button's position dynamically
+window.addEventListener('scroll', () => {
+    const expandedItems = document.querySelectorAll('.project-item.expanded');
+    if (expandedItems.length > 0) {
+        updateButtonPosition(expandedItems[0]); // Position the button relative to the first expanded project
+    }
+});
+
+// Initialize the button on page load
+document.addEventListener('DOMContentLoaded', createDynamicCloseButton);
