@@ -1,11 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="/script.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Erin Tan - Projects</title>
     <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusts the grid to fit items dynamically */
+            gap: 20px;
+            justify-content: center; /* Centers the grid itself */
+            padding: 20px;
+        }
+
+        .section-content {
+            max-width: 1200px; /* Ensures the section has a defined width */
+            margin: 0 auto; /* Centers the section on the page */
+            padding: 80px;
+            text-align: center; /* Centers the title */
+        }
+
+        .project-item {
+            background-color: #f9f8f4; /* Light academia background */
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            width: 100%; /* Full width of the container */
+            height: 200px; /* Fixed height for consistent size */
+            object-fit: cover; /* Ensures the image fits nicely within the dimensions */
+            border-radius: 10px 10px 0 0; /* Optional rounded corners at the top */
+        }
+
+        .project-summary {
+            padding: 15px;
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            margin-top: 20px; /* Add more space above the title */
+            margin-bottom: 10px;
+            color: #4a4a47; /* Light academia text color */
+        }
+
+        .project-description {
+            font-size: 1em;
+            color: #6c675c; /* Light academia secondary text color */
+        }
+
+        .project-expanded {
+            display: none;
+            padding: 20px;
+            background-color: #fdfaf6; /* Light academia background */
+            border-top: 2px solid #b38b6d; /* Warm beige accent */
+        }
+
+        .project-item.expanded {
+            grid-column: span 3;
+            grid-row: auto;
+        }
+
+        .project-item.expanded .project-expanded {
+            display: block;
+        }
+
+        .project-expanded h3, .project-expanded h4 {
+            color: #8da58e; /* Sage green */
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .project-expanded p {
+            color: #6c675c;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .dynamic-close-button {
+            position: absolute; /* Positions the button relative to the .project-expanded */
+            top: 10px; /* Adjust spacing from the top edge */
+            right: 10px; /* Adjust spacing from the right edge */
+            background-color: #8da58e; /* Sage green */
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10; /* Ensures it appears above the card content */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .dynamic-close-button:hover {
+            background-color: #6c675c; /* Darker shade for hover */
+            transform: scale(1.1); /* Slight enlargement on hover */
+        }
+
+        .project-item.expanded .dynamic-close-button {
+            display: block; /* Show the button only for the expanded card */
+        }
+
+        .hidden {
+            display: none; /* Hides the button when no project is expanded */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -22,7 +133,287 @@
 
     <section id="projects" class="section-content">
         <h2>My Projects</h2>
-        <p>Currently being updated!</p>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-item" id="project1">
+                <div class="project-header" onclick="toggleProject('project1')">
+                    <img src="/project_images/website_cover.png" alt="Personal Website Cover" class="project-image">
+                    <h3 class="project-title">Personal Website</h3>
+                    <p>My personal website built using EJS templating, Node.js, and custom CSS</p>
+                </div>
+                <div class="project-expanded" id="project1-expanded">
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/PersonalWebsite" target="_blank">Click Here</a></p>
+                    <h3>Introduction</h3>
+                    <p>This project is a dynamic, single-page web application highlighting my projects, professional experiences, and personal interests. Built with EJS templating, Node.js, and custom CSS, I focused on performance, responsiveness, and a cohesive design, ensuring optimal user experience.</p>
+
+                    <h3>Features and Technical Implementation</h3>
+                    <h4>Navigation Bar</h4>
+                    <p><strong>Structure:</strong> Built with an unordered list (&lt;ul&gt;) rendered dynamically using EJS templates.</p>
+                    <p><strong>Styling:</strong> Styled with custom CSS for a fixed position, seamless integration, and aesthetic responsiveness.</p>
+                    <p><strong>Functionality:</strong> Smooth scrolling implemented using the scroll-behavior: smooth property in CSS. Active link highlighting via CSS classes dynamically updated during scroll events using JavaScript.</p>
+                    <p><strong>Accessibility:</strong> Semantic navigation tags ensure screen-reader compatibility.</p>
+
+                    <h4>Home Section</h4>
+                    <p><strong>Content:</strong> Displays a personalized welcome message and links to GitHub and LinkedIn profiles.</p>
+                    <p><strong>Design:</strong> Centralized layout using CSS Flexbox. Background image styling includes background-image, background-position, and background-size properties.</p>
+                    <p><strong>Interactivity:</strong> Social media icons include hover effects (transform: scale(1.15)) for enhanced user engagement.</p>
+
+                    <h4>About Section</h4>
+                    <p><strong>Layout:</strong> Divided into two subsections using CSS Flexbox for alignment.</p>
+                    <p><strong>Slideshow Integration:</strong></p>
+                    <p><strong>Functionality:</strong> Custom JavaScript handles slideshow transitions, managing active classes for images.</p>
+                    <p><strong>Styling:</strong> Images styled with consistent dimensions and hover-shadow effects.</p>
+                    <p><strong>Responsiveness:</strong> Media queries ensure scalability on mobile devices.</p>
+
+                    <h4>Resume Section</h4>
+                    <p><strong>Timeline Structure:</strong> Each entry is rendered as a div using EJS templates, categorized into "Work Experience" and "Education."</p>
+                    <p><strong>Skills and Coursework:</strong> Dynamically rendered lists using EJS. Styled with consistent font and spacing for readability.</p>
+                    
+                    <h4>Projects Section</h4>
+                    <p><strong>Grid-Based Layout:</strong> CSS Grid (grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))) ensures a responsive arrangement of project cards.</p>
+                    <p><strong>Project Cards:</strong> Hover effects implemented with CSS transitions (transform: translateY(-5px)). Each card includes an image, description, and a link to a detailed project page rendered dynamically.</p>
+                    <p><strong>Scalability:</strong> Modularized structure allows new projects to be easily added by updating the associated EJS template.</p>
+
+                    <h4>Contact Section</h4>
+                    <p><strong>Icons and Links:</strong> Email and LinkedIn contact methods styled as clickable icons.</p>
+                    <p>Hover effects (transform: scale(1.2)) and transitions enhance interactivity.</p>
+                    <p><strong>Design Considerations:</strong> Reduced padding ensures compactness, maintaining visual balance.</p>
+
+                    <h3>Technologies and Design Principles</h3>
+                    <p><strong>Frontend:</strong></p>
+                    <p><strong>Templating:</strong> EJS allows dynamic content rendering, reducing code duplication.</p>
+                    <p><strong>CSS Framework:</strong> Custom styles emphasize a minimalist, Light Academia aesthetic.</p>
+                    <p><strong>Responsive Design:</strong> CSS Media Queries ensure compatibility with devices of varying screen sizes.</p>
+                    <p><strong>Backend:</strong></p>
+                    <p><strong>Node.js:</strong> Provides the runtime for executing server-side JavaScript.</p>
+                    <p><strong>Express.js:</strong> routes handle dynamic page rendering (GET /projects serves the projects page). Middleware processes HTTP requests efficiently.</p>
+                    <p><strong>Performance Optimizations:</strong></p>
+                    <p><strong>CSS Minification:</strong> Compresses stylesheets for faster loading times.</p>
+                    <p><strong>Caching:</strong> Static assets (e.g., images, stylesheets) are cached for improved performance.</p>
+                    <p><strong>Loading:</strong> Lazy-loading for images reduces initial page load time.</p>
+                    
+                    <button class="dynamic-close-button" onclick="toggleProject('project1')">Close</button>
+                </div>
+            </div>     
+            
+            <!-- Project 2 -->
+            <div class="project-item" id="project2">
+                <div class="project-header" onclick="toggleProject('project2')">
+                    <img src="/project_images/alzheimers_cover.png" alt="Alzheimer's Detection Cover" class="project-image">
+                    <h3 class="project-title">Alzheimer's Detection</h3>
+                    <p>Leveraged ML for detection of Alzheimer's Disease using MRI scans</p>
+                </div>
+                <div class="project-expanded" id="project2-expanded">
+                    <p><strong>Refer to this website for more details:</strong> <a href="https://earlyalzheimerdetection.streamlit.app" target="_blank">https://earlyalzheimerdetection.streamlit.app</a></p>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/Alzheimer-Detection" target="_blank">Click Here</a></p>
+                    <h3>Project Overview</h3>
+                    <p>This project focuses on leveraging machine learning for early detection of Alzheimer's disease using MRI scans. By employing advanced techniques such as Convolutional Neural Networks (CNNs), Logistic Regression, and Support Vector Machines (SVMs), the model analyzes subtle patterns of brain degeneration often overlooked in early stages. Data preprocessing techniques, including feature normalization, undersampling, and Principal Component Analysis (PCA), ensure robust performance. The project achieved high accuracy and highlighted the potential of computer-aided diagnostics (CAD) in medical imaging to revolutionize early-stage Alzheimer’s detection.</p>
+
+                    <h3>Dataset</h3>
+                    <p>Used the OASIS MRI dataset, containing over 80,000 MRI scans labeled with varying levels of dementia: Non-Demented, Very Mild, Mild, and Moderate. The dataset was split into 70% training, 20% testing, and 10% validation subsets to train and evaluate the models.</p>
+
+                    <h3>Machine Learning Models</h3>
+                    <h4>Convolutional Neural Network (CNN)</h4>
+                    <p><strong>Purpose:</strong> CNNs excel at image classification tasks by detecting complex spatial patterns in image data.</p>
+                    <p><strong>Model Layers:</strong></p>
+                    <p>Rescaling Layer: Normalizes pixel values to a range of [0,1].</p>
+                    <p>Convolutional Layers (Conv2D): Extracts spatial features through sliding kernels.</p>
+                    <p>MaxPooling2D: Reduces spatial dimensions to focus on prominent features.</p>
+                    <p>Dense Layers: Implements fully connected layers for classification.</p>
+                    <p><strong>Preprocessing:</strong></p>
+                    <p>Feature normalization by dividing pixel values by 255.</p>
+                    <p>Random adjustments for brightness and zoom, and horizontal flips for data augmentation.</p>
+                    <p><strong>Performance Metrics:</strong></p>
+                    <p>Accuracy: 99.97%</p>
+                    <p>Precision, Recall, and F1-Score: >99.9% across all metrics.</p>
+                    <p><img src="/project_images/gradcam.png" alt="Grad-CAM Visualization" style="max-width: 100%; height: auto; margin-bottom: 10px;" />
+                        Visualizations: Grad-CAM revealed that the model correctly focused on the frontal lobe for classification, emphasizing relevant features rather than dataset artifacts.</p>
+                        
+                    <h4>Logistic Regression</h4>
+                    <p><strong>Purpose:</strong> Acts as a baseline classification model with high computational efficiency.</p>
+                    <p><strong>Preprocessing:</strong></p>
+                    <p>Grayscale conversion to reduce data complexity.</p>
+                    <p>PCA for dimensionality reduction while preserving variance.</p>
+                    <p>L2 Regularization to minimize overfitting while retaining relevant features.</p>
+                    <p><strong>Performance Metrics:</strong></p>
+                    <p>Accuracy: 92.43% (before balancing), 90.44% (after balancing).</p>
+                    <p>Balanced F1-Score: ~93%.</p>
+                    <p><strong>Key Findings:</strong> Demonstrated robust classification capabilities, particularly for moderate and mild dementia stages, while struggling with Very Mild and Non-Demented cases due to subtle feature differences.</p>
+
+                    <h4>Support Vector Machine (SVM)</h4>
+                    <p><strong>Purpose:</strong> Designed for high-dimensional data with a focus on clear class boundaries.</p>
+                    <p><strong>Preprocessing:</strong></p>
+                    <p>Grayscale conversion and PCA, similar to Logistic Regression.</p>
+                    <p>Class weighting to address data imbalance.</p>
+                    <p><strong>Performance Metrics:</strong></p>
+                    <p>Accuracy: 76.46%</p>
+                    <p>F1-Score: 78.58%</p>
+                    <p><strong>Observations:</strong> Despite lower overall accuracy, SVM exhibited robust performance for moderate dementia detection. However, its reliance on a linear kernel led to challenges with less distinct classes.</p>
+
+                    <h3>Key Challenges and Insights</h3>
+                    <p><strong>Dataset Imbalance:</strong> The dataset was skewed, with Non-Demented cases dominating the labels. This led to biases in the CNN model's predictions.</p>
+                    <p><strong>Model Overfitting:</strong> High performance on test data raised concerns about potential overfitting, although consistent metrics across test subsets reduced this suspicion.</p>
+                    <p><strong>Generalizability:</strong> CNNs, while highly accurate on the provided dataset, may not generalize well to diverse data sources. Logistic Regression and SVMs, trained on balanced datasets, are expected to perform better on new data.</p>
+
+                    <h3>Results Summary</h3>
+                    <p><strong>CNN:</strong> Outperformed Logistic Regression and SVM with nearly perfect accuracy, although its reliance on skewed data raises generalizability concerns.</p>
+                    <p><strong>Logistic Regression:</strong> Provided a strong baseline with efficient and reliable performance across balanced datasets.</p>
+                    <p><strong>SVM:</strong> Struggled with subtle class differences but remained effective for detecting more pronounced stages of dementia.</p>
+
+                    <h3>Future Directions</h3>
+                    <p>Incorporating more diverse datasets to improve generalizability.</p>
+                    <p>Retraining CNNs on balanced datasets to evaluate performance under controlled conditions.</p>
+                    <p>Exploring additional models and ensemble methods to enhance accuracy and robustness.</p>
+                    <p>Implement logic for user to import a photo to test for Alzheimer's stage.</p>
+
+                    <button class="dynamic-close-button" onclick="toggleProject('project2')">Close</button>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-item" id="project3">
+                <div class="project-header" onclick="toggleProject('project3')">
+                    <img src="/project_images/best_pharmacy_cover.png" alt="B.E.S.T Pharmacy Cover" class="project-image">
+                    <h3 class="project-title">B.E.S.T Pharmacy Prescription Management</h3>
+                    <p>A streamlined system for managing pharmacy prescriptions efficiently</p>
+                </div>
+                <div class="project-expanded" id="project3-expanded">
+                    <video controls style="width: 100%; margin-bottom: 15px;">
+                        <source src="/project_images/BEST_Demo.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/pharmacy-prescription-management" target="_blank">Click Here</a></p>
+                    <h3>Project Overview</h3>
+                    <p>The Patient-Doctor Portal is a full-stack web application designed to enhance the interaction between doctors and patients. It includes role-specific functionalities and employs modern web development practices to ensure security, scalability, and an intuitive user experience.</p>
+
+                    <h3>Key Features</h3>
+                    <p><strong>Role-Based User Management:</strong></p>
+                    <p>Patients can view and update their health records, request medication refills, and track prescription requests.</p>
+                    <p>Doctors can manage patients, approve or deny refill requests with notes, and update health records.</p>
+
+                    <p><strong>Authentication and Authorization:</strong></p>
+                    <p>Implements Passport.js for secure user authentication and bcrypt for password hashing.</p>
+                    <p>Role-based access control ensures separation of functionalities for doctors and patients.</p>
+
+                    <p><strong>Database and Data Handling:</strong></p>
+                    <p>Patient and doctor data are stored in a database, with secure session handling via express-session.</p>
+                    <p>UUIDs are employed to uniquely identify users and resources, ensuring robust data management.</p>
+
+                    <p><strong>Email Notifications:</strong></p>
+                    <p>Integrated with Nodemailer to notify users about prescription approvals or rejections.</p>
+
+                    <h3>Technology Stack</h3>
+                    <p><strong>Backend:</strong></p>
+                    <p>Node.js and Express.js for server-side logic and API handling.</p>
+                    <p>Method-Override middleware to support HTTP methods.</p>
+
+                    <p><strong>Frontend:</strong></p>
+                    <p>EJS templating and Bootstrap 5 for design.</p>
+
+                    <p><strong>Authentication:</strong></p>
+                    <p>Passport.js for session management and bcrypt for secure password hashing.</p>
+
+                    <p><strong>Development Tools:</strong></p>
+                    <p>Nodemon for automated server reload during development.</p>
+                    <p>dotenv for environment variable management.</p>
+
+                    <h3>Core Modules</h3>
+                    <p><strong>Authentication:</strong> Passport-config.js defines user authentication strategies and role assignments.</p>
+                    <p><strong>User Interfaces:</strong> Login, registration, doctor, and patient portals cater to specific roles and functionalities.</p>
+                    <p><strong>Routing:</strong> Routes handle login, registration, prescription management, and health records.</p>
+                    
+                    <button class="dynamic-close-button" onclick="toggleProject('project3')">Close</button>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-item" id="project4">
+                <div class="project-header" onclick="toggleProject('project4')">
+                    <img src="/project_images/spotifywrapped.png" alt="Project 4 Cover" class="project-image">
+                    <h3 class="project-title">Spotify Wrapped</h3>
+                    <p>A personalized Spotify Wrapped made through Android Studio</p>
+                </div>
+                <div class="project-expanded" id="project4-expanded">
+                    <video controls style="width: 100%; margin-bottom: 15px;" id="spotifyVideo">
+                        <source src="/project_images/spotifywrappeddemo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <script>
+                        const video = document.getElementById('spotifyVideo');
+                        video.volume = 0; // Ensures the volume is set to 0
+                        video.addEventListener('volumechange', () => {
+                            if (video.volume !== 0) {
+                                video.volume = 0; // Forces the volume back to 0 if changed
+                            }
+                        });
+                    </script>                    
+                    <p><strong>Refer to this website for more details:</strong> <a href="https://sites.google.com/view/2340-wrapped/spotify-wrapped-app?authuser=0" target="_blank">Spotify Wrapped!</a></p>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/Spotify-Wrapped" target="_blank">Click Here</a></p>
+                    <h3>Project Overview</h3>
+                    <p>This Android application is designed to emulate Spotify’s “Wrapped” experience by generating and displaying personalized summaries of a user’s top songs, artists, and listening habits across different timeframes. The app leverages Spotify's Web API for data retrieval, Firebase Firestore for user data management, and Android's robust UI/UX frameworks for an engaging user experience.</p>
+
+                    <h3>Key Features</h3>
+                    <p><strong>Spotify Authentication:</strong></p>
+                    <p>Secure login using Spotify's OAuth 2.0 flow, granting access to user-specific data while adhering to privacy and security standards.</p>
+                    <p>Managed via the `LoginActivity`, which handles authentication tokens and user profile retrieval.</p>
+                    <p>Subsequent API calls, such as fetching user data (`https://api.spotify.com/v1/me`), are handled using `OkHttpClient` for asynchronous HTTP requests.</p>
+
+                    <p><strong>Data Collection and Processing</strong></p>
+                    <p>Spotify API is used to fetch data such as top tracks, artists, and genres. This data is processed and enriched for a detailed analysis of the user's listening habits.</p>
+                    <p>Custom `WrappedGenerator` logic calculates averages for features like danceability, energy, and valence to provide deeper insights.</p>
+
+                    <p><strong>User Management</strong></p>
+                    <p>Firestore stores user details and past summaries ("wraps") for future access.</p>
+                    <p>The `UserDBAccess` class encapsulates interactions with the Firestore database, handling operations like user creation, updates, and data retrieval.</p>
+                    
+                    <p><strong>Interactive User Interface</strong></p>
+                    <p>Modular fragments (`GenerateWrapFragment`, `DisplayPastFragment`, etc.) handle distinct sections of the app, such as generating new summaries, viewing past summaries, and managing settings.</p>
+                    <p> Real-time progress updates and loading indicators enhance user engagement during data processing.</p>
+
+                    <p><strong>Settings and Customization</strong></p>
+                    <p>Users can update their profile, delete their account, or log out from the settings page, which ensures a smooth and secure experience.</p>
+                    <p>State management ensures user actions (like changing usernames) are immediately reflected across the app.</p>
+
+                    <h3>Key Challenges and Solutions</h3>
+                    <p><strong>Managing Asynchronous API Calls</strong></p>
+                    <p><strong>Challenge:</strong> Maintaining responsiveness while fetching data.</p>
+                    <p><strong>Solution:</strong> Implemented callback-based patterns and used Android's `Handler` to synchronize background operations with UI updates.</p>
+
+                    <p><strong>Database Integration</strong></p>
+                    <p><strong>Challenge:</strong> Ensuring data consistency between Firebase Firestore and the app.</p>
+                    <p><strong>Solution:</strong> Developed a robust `UserDBAccess` class with retry logic and real-time updates.</p>
+
+                    <p><strong>Dynamic UI Updates</strong></p>
+                    <p><strong>Challenge:</strong> Handling UI changes based on user inputs and data processing.</p>
+                    <p><strong>Solution:</strong> Used data binding and state management patterns to propagate changes efficiently.</p>
+
+                    <button class="dynamic-close-button" onclick="toggleProject('project4')">Close</button>
+                </div>
+            </div>
+
+            
+            <!-- Project 5 -->
+            <div class="project-item" id="project5">
+                <div class="project-header" onclick="toggleProject('project5')">
+                    <img src="/project_images/mazeGBA.png" alt="Project 5 Cover" class="project-image">
+                    <h3 class="project-title">mazeGBA</h3>
+                    <p>Interactive graphical maze application in C</p>
+                </div>
+                <div class="project-expanded" id="project5-expanded">
+                    <video controls style="width: 100%; margin-bottom: 15px;" id="spotifyVideo">
+                        <source src="/project_images/mazeGBAdemo.mov" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/mazeGBA" target="_blank">Click Here</a></p>
+                    <h3>Project Overview</h3>
+                    
+                    <button class="dynamic-close-button" onclick="toggleProject('project4')">Close</button>
+                </div>
+            </div>
+
+        </div>
     </section>
+    
 </body>
 </html>
+
