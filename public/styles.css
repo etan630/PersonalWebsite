@@ -612,3 +612,131 @@ nav ul li a {
 .hidden {
     display: none; /* Hides the button when no project is expanded */
 }
+
+.project-date {
+    font-size: 0.9em; /* Smaller font size */
+    font-style: italic; /* Italicized text */
+    color: #6c675c; /* Matching the secondary text color */
+    margin-bottom: 10px; /* Space between date and description */
+    text-align: center; /* Center-align text */
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusts the grid to fit items dynamically */
+    gap: 20px;
+    justify-content: center; /* Centers the grid itself */
+    padding: 20px;
+}
+
+.section-content {
+    max-width: 1200px; /* Ensures the section has a defined width */
+    margin: 0 auto; /* Centers the section on the page */
+    padding: 80px;
+    text-align: center; /* Centers the title */
+}
+
+.project-item {
+    background-color: #f9f8f4; /* Light academia background */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.project-image {
+    width: 100%; /* Full width of the container */
+    height: 200px; /* Fixed height for consistent size */
+    object-fit: cover; /* Ensures the image fits nicely within the dimensions */
+    border-radius: 10px 10px 0 0; /* Optional rounded corners at the top */
+}
+
+.project-summary {
+    padding: 15px;
+}
+
+.project-title {
+    font-size: 1.5em;
+    margin-top: 20px; /* Add more space above the title */
+    margin-bottom: 10px;
+    color: #4a4a47; /* Light academia text color */
+}
+
+.project-description {
+    font-size: 1em;
+    color: #6c675c; /* Light academia secondary text color */
+}
+
+.project-expanded {
+    display: none;
+    padding: 20px;
+    background-color: #fdfaf6; /* Light academia background */
+    border-top: 2px solid #b38b6d; /* Warm beige accent */
+}
+
+.project-item.expanded {
+    grid-column: span 3;
+    grid-row: auto;
+}
+
+.project-item.expanded .project-expanded {
+    display: block;
+}
+
+.project-expanded h3, .project-expanded h4 {
+    color: #8da58e; /* Sage green */
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.project-expanded p {
+    color: #6c675c;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.dynamic-close-button {
+    position: absolute; /* Positions the button relative to the .project-expanded */
+    top: 10px; /* Adjust spacing from the top edge */
+    right: 10px; /* Adjust spacing from the right edge */
+    background-color: #8da58e; /* Sage green */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Ensures it appears above the card content */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dynamic-close-button:hover {
+    background-color: #6c675c; /* Darker shade for hover */
+    transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+.project-item.expanded .dynamic-close-button {
+    display: block; /* Show the button only for the expanded card */
+}
+
+.hidden {
+    display: none; /* Hides the button when no project is expanded */
+}
+
+.styled-list {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em;
+    color: #6c675c;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    list-style-type: disc;
+    margin-left: 20px;
+    text-align: left;
+}
