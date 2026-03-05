@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Erin Tan - Projects</title>
     <link rel="stylesheet" href="/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Raleway:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
+        <span class="nav-prefix"><span>$</span> erin_tan@portfolio:~/projects</span>
         <nav>
             <ul id="navbar">
                 <li><a href="/">home</a></li>
@@ -22,18 +22,23 @@
     </header>
 
     <section id="projects" class="section-content">
-        <h2>My Projects</h2>
+        <div class="section-label">03 / projects</div>
+        <div class="section-heading"><span class="cmd">$ ls -la </span>projects/</div>
+
         <div class="project-grid">
+
             <!-- Project 1 -->
             <div class="project-item" id="project1">
                 <div class="project-header" onclick="toggleProject('project1')">
                     <img src="/project_images/website_cover.png" alt="Personal Website Cover" class="project-image">
-                    <h3 class="project-title">Personal Website</h3>
-                    <p class="project-date">September 2024 - Present</p>
-                    <p>My personal website built using EJS templating, Node.js, and custom CSS</p>
+                    <div class="project-header-text">
+                        <h3 class="project-title">Personal Website</h3>
+                        <p class="project-date">September 2024 - Present</p>
+                        <p>My personal website built using EJS templating, Node.js, and custom CSS</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="project1-expanded">
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/PersonalWebsite" target="_blank">Click Here</a></p>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/PersonalWebsite" target="_blank">github.com/etan630/PersonalWebsite</a></p>
                     <h3>Project Overview</h3>
                     <p>This project is a dynamic, single-page web application highlighting my projects, professional experiences, and personal interests. Built with EJS templating, Node.js, and custom CSS, I focused on performance, responsiveness, and a cohesive design, ensuring optimal user experience.</p>
 
@@ -59,7 +64,7 @@
                     <h4>Resume Section</h4>
                     <p><strong>Timeline Structure:</strong> Each entry is rendered as a div using EJS templates, categorized into "Work Experience" and "Education."</p>
                     <p><strong>Skills and Coursework:</strong> Dynamically rendered lists using EJS. Styled with consistent font and spacing for readability.</p>
-                    
+
                     <h4>Projects Section</h4>
                     <p><strong>Grid-Based Layout:</strong> CSS Grid (grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))) ensures a responsive arrangement of project cards.</p>
                     <p><strong>Project Cards:</strong> Hover effects implemented with CSS transitions (transform: translateY(-5px)). Each card includes an image, description, and a link to a detailed project page rendered dynamically.</p>
@@ -71,35 +76,29 @@
                     <p><strong>Design Considerations:</strong> Reduced padding ensures compactness, maintaining visual balance.</p>
 
                     <h3>Technologies and Design Principles</h3>
-                    <p><strong>Frontend:</strong></p>
-                    <p><strong>Templating:</strong> EJS allows dynamic content rendering, reducing code duplication.</p>
-                    <p><strong>CSS Framework:</strong> Custom styles emphasize a minimalist, Light Academia aesthetic.</p>
-                    <p><strong>Responsive Design:</strong> CSS Media Queries ensure compatibility with devices of varying screen sizes.</p>
-                    <p><strong>Backend:</strong></p>
-                    <p><strong>Node.js:</strong> Provides the runtime for executing server-side JavaScript.</p>
-                    <p><strong>Express.js:</strong> routes handle dynamic page rendering (GET /projects serves the projects page). Middleware processes HTTP requests efficiently.</p>
-                    <p><strong>Performance Optimizations:</strong></p>
-                    <p><strong>CSS Minification:</strong> Compresses stylesheets for faster loading times.</p>
-                    <p><strong>Caching:</strong> Static assets (e.g., images, stylesheets) are cached for improved performance.</p>
-                    <p><strong>Loading:</strong> Lazy-loading for images reduces initial page load time.</p>
-                    
+                    <p><strong>Frontend:</strong> EJS templating, custom CSS, responsive design via media queries.</p>
+                    <p><strong>Backend:</strong> Node.js runtime, Express.js for routing and middleware.</p>
+                    <p><strong>Performance:</strong> CSS minification, static asset caching, lazy-loading for images.</p>
+
                     <button class="dynamic-close-button" onclick="toggleProject('project1')">Close</button>
                 </div>
-            </div>     
-            
+            </div>
+
             <!-- Project 2 -->
             <div class="project-item" id="project2">
                 <div class="project-header" onclick="toggleProject('project2')">
                     <img src="/project_images/alzheimers_cover.png" alt="Alzheimer's Detection Cover" class="project-image">
-                    <h3 class="project-title">Alzheimer's Detection</h3>
-                    <p class="project-date">October 2024 - December 2024</p>
-                    <p>Leveraged ML for detection of Alzheimer's Disease using MRI scans</p>
+                    <div class="project-header-text">
+                        <h3 class="project-title">Alzheimer's Detection</h3>
+                        <p class="project-date">October 2024 - December 2024</p>
+                        <p>Leveraged ML for detection of Alzheimer's Disease using MRI scans</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="project2-expanded">
-                    <p><strong>Refer to this website for more details:</strong> <a href="https://earlyalzheimerdetection.streamlit.app" target="_blank">https://earlyalzheimerdetection.streamlit.app</a></p>
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/Alzheimer-Detection" target="_blank">Click Here</a></p>
+                    <p><strong>Live Demo:</strong> <a href="https://earlyalzheimerdetection.streamlit.app" target="_blank">earlyalzheimerdetection.streamlit.app</a></p>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/Alzheimer-Detection" target="_blank">github.com/etan630/Alzheimer-Detection</a></p>
                     <h3>Project Overview</h3>
-                    <p>This project focuses on leveraging machine learning for early detection of Alzheimer's disease using MRI scans. By employing advanced techniques such as Convolutional Neural Networks (CNNs), Logistic Regression, and Support Vector Machines (SVMs), the model analyzes subtle patterns of brain degeneration often overlooked in early stages. Data preprocessing techniques, including feature normalization, undersampling, and Principal Component Analysis (PCA), ensure robust performance. The project achieved high accuracy and highlighted the potential of computer-aided diagnostics (CAD) in medical imaging to revolutionize early-stage Alzheimer’s detection.</p>
+                    <p>This project focuses on leveraging machine learning for early detection of Alzheimer's disease using MRI scans. By employing advanced techniques such as Convolutional Neural Networks (CNNs), Logistic Regression, and Support Vector Machines (SVMs), the model analyzes subtle patterns of brain degeneration often overlooked in early stages. Data preprocessing techniques, including feature normalization, undersampling, and Principal Component Analysis (PCA), ensure robust performance. The project achieved high accuracy and highlighted the potential of computer-aided diagnostics (CAD) in medical imaging to revolutionize early-stage Alzheimer's detection.</p>
 
                     <h3>Dataset</h3>
                     <p>Used the OASIS MRI dataset, containing over 80,000 MRI scans labeled with varying levels of dementia: Non-Demented, Very Mild, Mild, and Moderate. The dataset was split into 70% training, 20% testing, and 10% validation subsets to train and evaluate the models.</p>
@@ -108,66 +107,39 @@
                     <h4>Convolutional Neural Network (CNN)</h4>
                     <p><strong>Purpose:</strong> CNNs excel at image classification tasks by detecting complex spatial patterns in image data.</p>
                     <p><strong>Model Layers:</strong></p>
-                    <ul class = "styled-list">
+                    <ul class="styled-list">
                         <li>Rescaling Layer: Normalizes pixel values to a range of [0,1].</li>
                         <li>Convolutional Layers (Conv2D): Extracts spatial features through sliding kernels.</li>
                         <li>MaxPooling2D: Reduces spatial dimensions to focus on prominent features.</li>
                         <li>Dense Layers: Implements fully connected layers for classification.</li>
                     </ul>
                     <p><strong>Preprocessing:</strong></p>
-                    <ul class = "styled-list">
+                    <ul class="styled-list">
                         <li>Feature normalization by dividing pixel values by 255.</li>
                         <li>Random adjustments for brightness and zoom, and horizontal flips for data augmentation.</li>
                     </ul>
                     <p><strong>Performance Metrics:</strong></p>
-                    <p>Accuracy: 99.97%</p>
-                    <p>Precision, Recall, and F1-Score: >99.9% across all metrics.</p>
-                    <p><img src="/project_images/gradcam.png" alt="Grad-CAM Visualization" style="max-width: 100%; height: auto; margin-bottom: 10px;" />
-                        Visualizations: Grad-CAM revealed that the model correctly focused on the frontal lobe for classification, emphasizing relevant features rather than dataset artifacts.</p>
-                        
+                    <p>Accuracy: 99.97% &nbsp;|&nbsp; Precision, Recall, and F1-Score: &gt;99.9% across all metrics.</p>
+                    <p><img src="/project_images/gradcam.png" alt="Grad-CAM Visualization" style="max-width: 100%; height: auto; margin-bottom: 10px; border: 1px solid var(--border-mid);" />
+                        Visualizations: Grad-CAM revealed that the model correctly focused on the frontal lobe for classification.</p>
+
                     <h4>Logistic Regression</h4>
                     <p><strong>Purpose:</strong> Acts as a baseline classification model with high computational efficiency.</p>
-                    <p><strong>Preprocessing:</strong></p>
-                    <ul class = "styled-list">
-                        <li>Grayscale conversion to reduce data complexity.</li>
-                        <li>PCA for dimensionality reduction while preserving variance.</li>
-                        <li>L2 Regularization to minimize overfitting while retaining relevant features.</li>
-                    </ul>
-                    <p><strong>Performance Metrics:</strong></p>
-                    <p>Accuracy: 92.43% (before balancing), 90.44% (after balancing).</p>
-                    <p>Balanced F1-Score: ~93%.</p>
-                    <p><strong>Key Findings:</strong> Demonstrated robust classification capabilities, particularly for moderate and mild dementia stages, while struggling with Very Mild and Non-Demented cases due to subtle feature differences.</p>
+                    <p><strong>Preprocessing:</strong> Grayscale conversion, PCA for dimensionality reduction, L2 regularization to minimize overfitting.</p>
+                    <p><strong>Performance:</strong> Accuracy: 92.43% (before balancing), 90.44% (after balancing). Balanced F1-Score: ~93%.</p>
 
                     <h4>Support Vector Machine (SVM)</h4>
                     <p><strong>Purpose:</strong> Designed for high-dimensional data with a focus on clear class boundaries.</p>
-                    <p><strong>Preprocessing:</strong></p>
-                    <ul class = "styled-list">
-                        <li>Grayscale conversion and PCA, similar to Logistic Regression.</li>
-                        <li>Class weighting to address data imbalance.</li>
-                    </ul>
-                    <p><strong>Performance Metrics:</strong></p>
-                    <p>Accuracy: 76.46%</p>
-                    <p>F1-Score: 78.58%</p>
-                    <p><strong>Observations:</strong> Despite lower overall accuracy, SVM exhibited robust performance for moderate dementia detection. However, its reliance on a linear kernel led to challenges with less distinct classes.</p>
-
-                    <h3>Key Challenges and Insights</h3>
-                    <p><strong>Dataset Imbalance:</strong> The dataset was skewed, with Non-Demented cases dominating the labels. This led to biases in the CNN model's predictions.</p>
-                    <p><strong>Model Overfitting:</strong> High performance on test data raised concerns about potential overfitting, although consistent metrics across test subsets reduced this suspicion.</p>
-                    <p><strong>Generalizability:</strong> CNNs, while highly accurate on the provided dataset, may not generalize well to diverse data sources. Logistic Regression and SVMs, trained on balanced datasets, are expected to perform better on new data.</p>
-
-                    <h3>Results Summary</h3>
-                    <p><strong>CNN:</strong> Outperformed Logistic Regression and SVM with nearly perfect accuracy, although its reliance on skewed data raises generalizability concerns.</p>
-                    <p><strong>Logistic Regression:</strong> Provided a strong baseline with efficient and reliable performance across balanced datasets.</p>
-                    <p><strong>SVM:</strong> Struggled with subtle class differences but remained effective for detecting more pronounced stages of dementia.</p>
+                    <p><strong>Preprocessing:</strong> Grayscale conversion, PCA, class weighting to address data imbalance.</p>
+                    <p><strong>Performance:</strong> Accuracy: 76.46% &nbsp;|&nbsp; F1-Score: 78.58%</p>
 
                     <h3>Future Directions</h3>
-                    <ul class = "styled-list">
+                    <ul class="styled-list">
                         <li>Incorporating more diverse datasets to improve generalizability.</li>
                         <li>Retraining CNNs on balanced datasets to evaluate performance under controlled conditions.</li>
                         <li>Exploring additional models and ensemble methods to enhance accuracy and robustness.</li>
                         <li>Implement logic for user to import a photo to test for Alzheimer's stage.</li>
                     </ul>
-                    
 
                     <button class="dynamic-close-button" onclick="toggleProject('project2')">Close</button>
                 </div>
@@ -177,55 +149,30 @@
             <div class="project-item" id="project3">
                 <div class="project-header" onclick="toggleProject('project3')">
                     <img src="/project_images/best_pharmacy_cover.png" alt="B.E.S.T Pharmacy Cover" class="project-image">
-                    <h3 class="project-title">B.E.S.T Pharmacy Prescription Management</h3>
-                    <p class="project-date">July 2024</p>
-                    <p>A streamlined system for managing pharmacy prescriptions efficiently</p>
+                    <div class="project-header-text">
+                        <h3 class="project-title">B.E.S.T Pharmacy Prescription Management</h3>
+                        <p class="project-date">July 2024</p>
+                        <p>A streamlined system for managing pharmacy prescriptions efficiently</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="project3-expanded">
-                    <video controls style="width: 100%; margin-bottom: 15px;">
+                    <video controls style="width: 100%; margin-bottom: 15px; border: 1px solid var(--border-mid);">
                         <source src="/project_images/BEST_Demo.mov" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/pharmacy-prescription-management" target="_blank">Click Here</a></p>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/pharmacy-prescription-management" target="_blank">github.com/etan630/pharmacy-prescription-management</a></p>
                     <h3>Project Overview</h3>
                     <p>The Patient-Doctor Portal is a full-stack web application designed to enhance the interaction between doctors and patients. It includes role-specific functionalities and employs modern web development practices to ensure security, scalability, and an intuitive user experience.</p>
 
                     <h3>Key Features</h3>
-                    <p><strong>Role-Based User Management:</strong></p>
-                    <p>Patients can view and update their health records, request medication refills, and track prescription requests.</p>
-                    <p>Doctors can manage patients, approve or deny refill requests with notes, and update health records.</p>
-
-                    <p><strong>Authentication and Authorization:</strong></p>
-                    <p>Implements Passport.js for secure user authentication and bcrypt for password hashing.</p>
-                    <p>Role-based access control ensures separation of functionalities for doctors and patients.</p>
-
-                    <p><strong>Database and Data Handling:</strong></p>
-                    <p>Patient and doctor data are stored in a database, with secure session handling via express-session.</p>
-                    <p>UUIDs are employed to uniquely identify users and resources, ensuring robust data management.</p>
-
-                    <p><strong>Email Notifications:</strong></p>
-                    <p>Integrated with Nodemailer to notify users about prescription approvals or rejections.</p>
+                    <p><strong>Role-Based User Management:</strong> Patients can view/update health records, request medication refills, and track prescription requests. Doctors can manage patients, approve or deny refill requests, and update health records.</p>
+                    <p><strong>Authentication and Authorization:</strong> Implements Passport.js for secure user authentication and bcrypt for password hashing. Role-based access control ensures separation of functionalities.</p>
+                    <p><strong>Database and Data Handling:</strong> Patient and doctor data stored securely, with express-session for session handling. UUIDs employed to uniquely identify users and resources.</p>
+                    <p><strong>Email Notifications:</strong> Integrated with Nodemailer to notify users about prescription approvals or rejections.</p>
 
                     <h3>Technology Stack</h3>
-                    <p><strong>Backend:</strong></p>
-                    <p>Node.js and Express.js for server-side logic and API handling.</p>
-                    <p>Method-Override middleware to support HTTP methods.</p>
+                    <p><strong>Backend:</strong> Node.js + Express.js &nbsp;|&nbsp; <strong>Frontend:</strong> EJS + Bootstrap 5 &nbsp;|&nbsp; <strong>Auth:</strong> Passport.js + bcrypt &nbsp;|&nbsp; <strong>Dev Tools:</strong> Nodemon, dotenv</p>
 
-                    <p><strong>Frontend:</strong></p>
-                    <p>EJS templating and Bootstrap 5 for design.</p>
-
-                    <p><strong>Authentication:</strong></p>
-                    <p>Passport.js for session management and bcrypt for secure password hashing.</p>
-
-                    <p><strong>Development Tools:</strong></p>
-                    <p>Nodemon for automated server reload during development.</p>
-                    <p>dotenv for environment variable management.</p>
-
-                    <h3>Core Modules</h3>
-                    <p><strong>Authentication:</strong> Passport-config.js defines user authentication strategies and role assignments.</p>
-                    <p><strong>User Interfaces:</strong> Login, registration, doctor, and patient portals cater to specific roles and functionalities.</p>
-                    <p><strong>Routing:</strong> Routes handle login, registration, prescription management, and health records.</p>
-                    
                     <button class="dynamic-close-button" onclick="toggleProject('project3')">Close</button>
                 </div>
             </div>
@@ -234,214 +181,104 @@
             <div class="project-item" id="project4">
                 <div class="project-header" onclick="toggleProject('project4')">
                     <img src="/project_images/spotifywrapped.png" alt="Project 4 Cover" class="project-image">
-                    <h3 class="project-title">Spotify Wrapped</h3>
-                    <p class="project-date">March 2024 - April 2024</p>
-                    <p>A personalized Spotify Wrapped made through Android Studio</p>
+                    <div class="project-header-text">
+                        <h3 class="project-title">Spotify Wrapped</h3>
+                        <p class="project-date">March 2024 - April 2024</p>
+                        <p>A personalized Spotify Wrapped made through Android Studio</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="project4-expanded">
-                    <video controls style="width: 100%; margin-bottom: 15px;" id="spotifyVideo">
+                    <video controls style="width: 100%; margin-bottom: 15px; border: 1px solid var(--border-mid);" id="spotifyVideo">
                         <source src="/project_images/spotifywrappeddemo.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <script>
                         const video = document.getElementById('spotifyVideo');
-                        video.volume = 0; // Ensures the volume is set to 0
+                        video.volume = 0;
                         video.addEventListener('volumechange', () => {
-                            if (video.volume !== 0) {
-                                video.volume = 0; // Forces the volume back to 0 if changed
-                            }
+                            if (video.volume !== 0) { video.volume = 0; }
                         });
-                    </script>                    
-                    <p><strong>Refer to this website for more details:</strong> <a href="https://sites.google.com/view/2340-wrapped/spotify-wrapped-app?authuser=0" target="_blank">Spotify Wrapped!</a></p>
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/Spotify-Wrapped" target="_blank">Click Here</a></p>
+                    </script>
+                    <p><strong>Live Demo:</strong> <a href="https://sites.google.com/view/2340-wrapped/spotify-wrapped-app?authuser=0" target="_blank">sites.google.com/view/2340-wrapped</a></p>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/Spotify-Wrapped" target="_blank">github.com/etan630/Spotify-Wrapped</a></p>
                     <h3>Project Overview</h3>
-                    <p>This Android application is designed to emulate Spotify’s “Wrapped” experience by generating and displaying personalized summaries of a user’s top songs, artists, and listening habits across different timeframes. The app leverages Spotify's Web API for data retrieval, Firebase Firestore for user data management, and Android's robust UI/UX frameworks for an engaging user experience.</p>
+                    <p>This Android application emulates Spotify's "Wrapped" experience by generating personalized summaries of a user's top songs, artists, and listening habits across different timeframes. The app leverages Spotify's Web API for data retrieval, Firebase Firestore for user data management, and Android's UI/UX frameworks for an engaging experience.</p>
 
                     <h3>Key Features</h3>
-                    <p><strong>Spotify Authentication:</strong></p>
-                    <p>Secure login using Spotify's OAuth 2.0 flow, granting access to user-specific data while adhering to privacy and security standards.</p>
-                    <p>Managed via the `LoginActivity`, which handles authentication tokens and user profile retrieval.</p>
-                    <p>Subsequent API calls, such as fetching user data (`https://api.spotify.com/v1/me`), are handled using `OkHttpClient` for asynchronous HTTP requests.</p>
-
-                    <p><strong>Data Collection and Processing</strong></p>
-                    <p>Spotify API is used to fetch data such as top tracks, artists, and genres. This data is processed and enriched for a detailed analysis of the user's listening habits.</p>
-                    <p>Custom `WrappedGenerator` logic calculates averages for features like danceability, energy, and valence to provide deeper insights.</p>
-
-                    <p><strong>User Management</strong></p>
-                    <p>Firestore stores user details and past summaries ("wraps") for future access.</p>
-                    <p>The `UserDBAccess` class encapsulates interactions with the Firestore database, handling operations like user creation, updates, and data retrieval.</p>
-                    
-                    <p><strong>Interactive User Interface</strong></p>
-                    <p>Modular fragments (`GenerateWrapFragment`, `DisplayPastFragment`, etc.) handle distinct sections of the app, such as generating new summaries, viewing past summaries, and managing settings.</p>
-                    <p> Real-time progress updates and loading indicators enhance user engagement during data processing.</p>
-
-                    <p><strong>Settings and Customization</strong></p>
-                    <p>Users can update their profile, delete their account, or log out from the settings page, which ensures a smooth and secure experience.</p>
-                    <p>State management ensures user actions (like changing usernames) are immediately reflected across the app.</p>
+                    <p><strong>Spotify Authentication:</strong> Secure login using Spotify's OAuth 2.0 flow. Managed via LoginActivity with token handling and async HTTP requests via OkHttpClient.</p>
+                    <p><strong>Data Collection &amp; Processing:</strong> Spotify API fetches top tracks, artists, and genres. Custom WrappedGenerator calculates averages for danceability, energy, and valence.</p>
+                    <p><strong>User Management:</strong> Firestore stores user details and past summaries. UserDBAccess class handles all database operations.</p>
+                    <p><strong>Interactive UI:</strong> Modular fragments handle distinct app sections. Real-time progress updates during data processing.</p>
 
                     <h3>Key Challenges and Solutions</h3>
-                    <p><strong>Managing Asynchronous API Calls</strong></p>
-                    <p><strong>Challenge:</strong> Maintaining responsiveness while fetching data.</p>
-                    <p><strong>Solution:</strong> Implemented callback-based patterns and used Android's `Handler` to synchronize background operations with UI updates.</p>
-
-                    <p><strong>Database Integration</strong></p>
-                    <p><strong>Challenge:</strong> Ensuring data consistency between Firebase Firestore and the app.</p>
-                    <p><strong>Solution:</strong> Developed a robust `UserDBAccess` class with retry logic and real-time updates.</p>
-
-                    <p><strong>Dynamic UI Updates</strong></p>
-                    <p><strong>Challenge:</strong> Handling UI changes based on user inputs and data processing.</p>
-                    <p><strong>Solution:</strong> Used data binding and state management patterns to propagate changes efficiently.</p>
+                    <p><strong>Async API Calls:</strong> Used callback-based patterns and Android's Handler to sync background operations with UI updates.</p>
+                    <p><strong>Database Integration:</strong> Developed a robust UserDBAccess class with retry logic and real-time updates.</p>
+                    <p><strong>Dynamic UI:</strong> Used data binding and state management patterns to propagate changes efficiently.</p>
 
                     <button class="dynamic-close-button" onclick="toggleProject('project4')">Close</button>
                 </div>
             </div>
 
-            
             <!-- Project 5 -->
             <div class="project-item" id="project5">
                 <div class="project-header" onclick="toggleProject('project5')">
-                    <img src="/project_images/mazeGBA.png" alt="Project 5 Cover" class="project-image">
-                    <h3 class="project-title">mazeGBA</h3>
-                    <p class="project-date">April 2024</p>
-                    <p>Interactive graphical maze application in C</p>
+                    <img src="/project_images/habittracker_cover.png" alt="Habit Tracker Cover" class="project-image">
+                    <div class="project-header-text">
+                        <h3 class="project-title">Habit Tracker</h3>
+                        <p class="project-date">October 2023 - December 2023</p>
+                        <p>An Android app for tracking daily habits and routines</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="project5-expanded">
-                    <video controls style="width: 100%; margin-bottom: 15px;" id="mazeGBA">
-                        <source src="/project_images/mazeGBAdemo.mov" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/mazeGBA" target="_blank">Click Here</a></p>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/HabitTracker" target="_blank">github.com/etan630/HabitTracker</a></p>
                     <h3>Project Overview</h3>
-                    <p>This project is a Game Boy Advance (GBA) game built in C, implementing graphics rendering, state-baed gameplay logic, and user interation. The player navigates through a maze to locate a missing cat within a fixed timeframe. Key features include dynamic graphics, collision detection, and smooth state transitions between gameplay screens.</p>
-                    
+                    <p>Habit Tracker is an Android application designed to help users build and maintain daily habits. The app allows users to create, track, and visualize their progress over time with intuitive UI components and persistent data storage.</p>
+
                     <h3>Key Features</h3>
-                    
-                    <p><strong>Graphics Rendering:</strong></p>
-                    <p>Utilizes the GBA's Mode 3 for direct framebuffer manipulation</p>
-                    <p>Includes functions to: <br>
-                        Set individual pixels (<code>setPixel</code>). <br>
-                        Draw shapes and images (<code>drawRectDMA, drawImageDMA</code>). <br>
-                        Display text using a custom 6x8 font (<code>drawString, drawChar</code>).                
-                    </p>
+                    <p><strong>Habit Management:</strong> Users can create custom habits with names, descriptions, and frequency settings. Each habit tracks completion status on a daily basis.</p>
+                    <p><strong>Progress Visualization:</strong> Charts and statistics show completion rates over time, helping users stay motivated and identify patterns.</p>
+                    <p><strong>Notifications:</strong> Customizable reminders keep users on track with their habit goals throughout the day.</p>
+                    <p><strong>Data Persistence:</strong> Local database storage ensures habit data survives app restarts and device reboots.</p>
 
-                    <p><strong>Gameplay Logic:</strong></p>
-                    <p>The game is structured as a finite state machine with states such as: <br>
-                        <code>STARTBG</code>: Displays the start screen background. <br>
-                        <code>PLAY</code>: The main gameplay loop. <br>
-                        <code>WIN/LOSE</code>: Displays corresponding end states.</p>
-                    <p>Player movement is controlled by GBA buttons (<code>BUTTON_UP, BUTTON_DOWN</code>, etc.), with collision detection ensuring valid moves.</p>
-
-                    <p><strong>Game States:</strong></p>
-                    <p>Transitions between states are triggered by user inputs or game events: <br>
-                        Reaching the cat transitions to <code>WIN</code>. <br>
-                        Running out of time transitions to <code>LOSE</code>.</p>
-                    <p>Each state is responsible for rendering its associated graphics and handling inputs.</p>
-
-                    <p><strong>Collision Detection:</strong></p>
-                    <p>The player sprite interacts with the maze, detecting walls and boundaries using pixel-based collision detection (<code>isColliding</code>).</p>
-
-                    <p><strong>Timer and Scoring:</strong></p>
-                    <p>A countdown timer is displayed during gameplay.</p>
-                    <p>Losing occurs if the timer reaches zero before the player finds the cat.</p>
-
-                    <p><strong>Graphics Optimization:</strong></p>
-                    <p>DMA (Direct Memory Access) is leveraged for efficient graphics rendering, such as filling the screen or updating regions with new images.</p>
-                    
-                    <h3>Detailed Features</h3>
-
-                    <p><strong>Graphics and Animation:</strong></p>
-                    <p>The background and game elements are rendered using DMA for high performance.</p>
-                    <p>Dynamic text is displayed with smooth scrolling on the start screen.</p>
-                    <p>The game includes sprite animations for the player character.</p>
-
-                    <p><strong>Custom Drawing Functions:</strong></p>
-                    <p>Functions such as <code>drawFullScreenImageDMA</code> and <code>drawRectDMA</code> abstract the complexity of graphical operations, allowing clean integration of assets.</p>
-
-                    <p><strong>Hardware Interaction:</strong></p>
-                    <p>Direct manipulation of GBA registers (<code>REG_DISPCNT, SCANLINECOUNTER</code>) for rendering and synchronization.</p>
-                    <p>VBlank waiting ensures smooth screen updates, avoiding tearing.</p>
+                    <h3>Technical Implementation</h3>
+                    <p><strong>Architecture:</strong> MVVM pattern separating UI, business logic, and data layers for maintainability.</p>
+                    <p><strong>Database:</strong> Room persistence library for structured local data storage with DAO pattern.</p>
+                    <p><strong>UI:</strong> RecyclerView with custom adapters for efficient list rendering. Material Design components for consistent look and feel.</p>
 
                     <button class="dynamic-close-button" onclick="toggleProject('project5')">Close</button>
                 </div>
             </div>
 
-
             <!-- Project 6 -->
             <div class="project-item" id="project6">
                 <div class="project-header" onclick="toggleProject('project6')">
-                    <img src="/project_images/scheduler.png" alt="Project 6 Cover" class="project-image">
-                    <h3 class="project-title">Course Scheduler</h3>
-                    <p class="project-date">February 2024</p>
-                    <p>Course Scheduler and Assignment Tracker app</p>
+                    <img src="/project_images/studentorganizer_cover.png" alt="Student Organizer Cover" class="project-image">
+                    <div class="project-header-text">
+                        <h3 class="project-title">Student Organizer</h3>
+                        <p class="project-date">August 2023 - November 2023</p>
+                        <p>Android app to organize assignments, exams, and tasks for students</p>
+                    </div>
                 </div>
-                <div class="project-expanded" id="project5-expanded">
-                    <iframe 
-                        style="width: 100%; height: 315px; margin-bottom: 15px;" 
-                        src="https://www.youtube.com/embed/l3CPbGWSN60" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                    <p><strong>Refer to this website for more details:</strong> <a href="https://sites.google.com/view/2340scheduler/the-app?authuser=0" target="_blank">Scheduler App!</a></p>
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/CourseScheduler" target="_blank">Click Here</a></p>
-                    
+                <div class="project-expanded" id="project6-expanded">
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/StudentOrganizer" target="_blank">github.com/etan630/StudentOrganizer</a></p>
                     <h3>Project Overview</h3>
-                    <p>This project is an Android-based course and task management application. It enables users to organize their academic schedules by managing courses, assignments, exams, and tasks. Built with a modular architecture, the app leverages fragments for dynamic UI management and employs a ViewModel to maintain and synchronize data across components, ensuring a responsive and seamless user experience.</p>
-                    
+                    <p>Student Organizer is an Android application designed to help students manage their academic workload. The app provides tools for tracking assignments, scheduling exams, and maintaining a task list, all in one centralized location.</p>
+
                     <h3>Key Features</h3>
-                    <p><strong>Dynamic Data Handling</strong></p>
-                    <ul class = "styled-list">
-                        <li> Real-time updates with LiveData for seamless UI synchronization.</li>
-                        <li>In-memory data storage for quick prototyping, implemented via `NoDBAppViewModel`.</li>
-                    </ul>
-                    <p><strong>User Interaction</strong></p>
-                    <ul class = "styled-list">
-                        <li> Intuitive navigation using a bottom navigation bar and floating action button.</li>
-                        <li>CRUD operations for all entities (courses, tasks) through a dynamic fragment-based architecture.</li>
-                    </ul>
+                    <p><strong>Assignment Tracking:</strong> Add, edit, and delete assignments with due dates, subject tags, and priority levels. Color-coded indicators highlight upcoming and overdue items.</p>
+                    <p><strong>Exam Scheduler:</strong> Calendar-based exam scheduling with reminders. Visual timeline displays upcoming exams in chronological order.</p>
+                    <p><strong>Task Manager:</strong> General-purpose task list with checkboxes and notes for non-academic to-dos.</p>
+                    <p><strong>Search and Filter:</strong> Quickly find items by subject, date range, or priority level.</p>
 
-                    <h3>Technical Stack</h3>
-                    <p><strong>Language</strong>: Java</p>
-                    <p><strong>Frameworks</strong>: Android Jetpack (ViewModel, LiveData, Navigation)</p>
-                    <p><strong>UI Components:</strong>: RecyclerView, Material Design elements (FloatingActionButton, CheckBox)</p>
-                    <p><strong>Data Models</strong>: Custom POJOs for `Course` and `ListItem` entities</p>
-
-                    <h3>Architecture</h3>
-                    <p><strong>Model-View-ViewModel (MVVM)</strong></p>
-                    <ul class = "styled-list">
-                        <li>Model: Includes data models like <code>`Course`, `Assignment`, `Exam`,</code> and <code>`Todo`</code>. </li>
-                        <li>View: Fragments (<code>`CoursesFragment`, `ListFragment`</code>) that handle user interactions and display data.</li>
-                        <li>ViewModel: <code>`NoDBAppViewModel`</code>, which acts as the single source of truth for UI data and supports in-memory operations.</li>
-                    </ul>
-
-                    <p><strong>Fragment-Based UI</strong></p>
-                    <ul class = "styled-list">
-                        <li>Dynamic fragments (<code>`AddAssignmentFragment`, `AddExamFragment`, `AddTodoFragment`</code>) ensure modularity.</li>
-                        <li>Navigation actions enable seamless transitions between fragments.</li>
-                    </ul>
-
-                    <p><strong>RecyclerView Adapters</strong></p>
-                    <ul class = "styled-list">
-                        <li>Custom adapters (<code>`CourseListAdapter`, `ListItemAdapter`</code>) for rendering data in lists.</li>
-                        <li>Support for different view types (e.g., assignments, exams, todos) using the <code>`RecyclerView.ViewHolder`</code> pattern.</li>
-                    </ul>
-
-                    <h3>Implementation Details</h3>
-                    <p><strong>Data Handling</strong></p>
-                    <ul class = "styled-list">
-                        <li> Courses and tasks are managed as <code>`LiveData`</code> objects, enabling automatic UI updates when data changes.</li>
-                        <li>In-memory storage facilitates quick and lightweight data operations.</li>
-                    </ul>
-
-                    <p><strong>UI Components</strong></p>
-                    <ul class = "styled-list">
+                    <h3>Technical Implementation</h3>
+                    <p><strong>UI Components:</strong></p>
+                    <ul class="styled-list">
                         <li>Input fields for adding or editing data use EditText widgets, with validations for mandatory fields and proper formats.</li>
-                        <li>Lists are displayed using RecyclerView, with custom view holders (<code>`AssignmentViewHolder`, `ExamViewHolder`, `TaskViewHolder`</code>) for specialized rendering.</li>
+                        <li>Lists are displayed using RecyclerView, with custom view holders (AssignmentViewHolder, ExamViewHolder, TaskViewHolder) for specialized rendering.</li>
                     </ul>
 
-                    <p><strong>Error Handling</strong></p>
-                    <ul class = "styled-list">
+                    <p><strong>Error Handling:</strong></p>
+                    <ul class="styled-list">
                         <li>Input validation for required fields and date formats.</li>
                         <li>Toast notifications guide users on successful or failed operations.</li>
                     </ul>
@@ -452,20 +289,24 @@
 
         </div>
     </section>
-    
-    <section id="other-works" class="section-content">
-        <h2>Other Works</h2>
+
+    <section id="other-works" class="section-content" style="padding-top: 40px;">
+        <div class="section-label">03b / other works</div>
+        <div class="section-heading"><span class="cmd">$ ls -la </span>other/</div>
+
         <div class="project-grid">
             <!-- Other 1 -->
             <div class="project-item" id="other1">
                 <div class="project-header" onclick="toggleProject('other1')">
-                    <h3 class="project-title">DSA Textbook</h3>
-                    <p class="project-date">July 2024 - September 2024</p>
-                    <p>Collection of essential data structures and algorithms</p>
+                    <div class="project-header-text" style="padding-top:18px;">
+                        <h3 class="project-title">DSA Textbook</h3>
+                        <p class="project-date">July 2024 - September 2024</p>
+                        <p>Collection of essential data structures and algorithms</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="other1-expanded">
-                    <p><strong>Refer to this website for more details:</strong> <a href="https://github.com/etan630/DSA-Bible" target="_blank">The Textbook!</a></p>
-                    <p>I've compiled and meticulously organized a comprehensive collection of essential data structures and algorithms, tailored for CS majors to reference and refresh their knowledge throughout their careers. Currently spanning 130 pages, this resource is a work in progress, and I'm excited to continue expanding it to support both students and professionals in the field</p>
+                    <p><strong>Refer to this resource:</strong> <a href="https://github.com/etan630/DSA-Bible" target="_blank">github.com/etan630/DSA-Bible</a></p>
+                    <p>I've compiled and meticulously organized a comprehensive collection of essential data structures and algorithms, tailored for CS majors to reference and refresh their knowledge throughout their careers. Currently spanning 130 pages, this resource is a work in progress, and I'm excited to continue expanding it to support both students and professionals in the field.</p>
                     <button class="dynamic-close-button" onclick="toggleProject('other1')">Close</button>
                 </div>
             </div>
@@ -473,21 +314,21 @@
             <!-- Other 2 -->
             <div class="project-item" id="other2">
                 <div class="project-header" onclick="toggleProject('other2')">
-                    <h3 class="project-title">JavaFX Application</h3>
-                    <p class="project-date">July 2023</p>
-                    <p>Startup organization using JavaFX</p>
+                    <div class="project-header-text" style="padding-top:18px;">
+                        <h3 class="project-title">JavaFX Application</h3>
+                        <p class="project-date">July 2023</p>
+                        <p>Startup organization using JavaFX</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="other2-expanded">
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/JavaFX-Application" target="_blank">GitHub Repository</a></p>
-                    <ul class = "styled-list">
-                        <li>Designed and implemented a JavaFX desktop application featuring dynamic UI elements for managing startup ideas, utilizing JavaFX frameworks such as <code>HBox, VBox, ListView</code>, and custom <code>Label</code> styling for intuitive user interaction.</li>
-                        <li>Leveraged anonymous inner classes and lambda expressions for streamlined event handling in buttons and other interactive components, ensuring responsive functionality.</li>
-                        <li>Incorporated robust data validation mechanisms, including error alerts for empty fields, invalid input ranges, and incorrect data types, to enhance user experience and maintain data integrity.</li>
-                        <li>Implemented advanced file management capabilities through a custom <code>FileUtil</code>> class, enabling persistent storage and retrieval of startup ideas, with the ability to save formatted outputs using <code>PrintWriter</code></li>
-                        <li>Developed sorting and resetting functionalities, employing the <code>Comparable</code>> interface for custom sorting logic and lambda functions for efficient data manipulation.</li>
-                        <li>Utilized object-oriented principles, including encapsulation and polymorphism, for modular and maintainable code design, specifically in the <code>StartUpIdea</code>> class.</li>
-                        <li>Integrated multimedia components using JavaFX's <code>MediaPlayer</code> and <code>Timeline</code> to provide interactive feedback and enhance user engagement through audio playback on successful actions.</li>
-                        <li>Enhanced GUI design aesthetics and usability by applying responsive layouts, observable lists (<code>FXCollections.observableArrayList</code>), and background styling with CSS-like syntax for a cohesive application theme.</li>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/JavaFX-Application" target="_blank">github.com/etan630/JavaFX-Application</a></p>
+                    <ul class="styled-list">
+                        <li>Designed and implemented a JavaFX desktop application featuring dynamic UI elements for managing startup ideas, utilizing HBox, VBox, ListView, and custom Label styling.</li>
+                        <li>Leveraged anonymous inner classes and lambda expressions for streamlined event handling in buttons and interactive components.</li>
+                        <li>Incorporated robust data validation mechanisms, including error alerts for empty fields, invalid input ranges, and incorrect data types.</li>
+                        <li>Implemented advanced file management via a custom FileUtil class, enabling persistent storage and retrieval of startup ideas using PrintWriter.</li>
+                        <li>Developed sorting and resetting functionalities, employing the Comparable interface for custom sorting logic.</li>
+                        <li>Integrated multimedia components using JavaFX's MediaPlayer and Timeline for interactive audio feedback.</li>
                     </ul>
                     <button class="dynamic-close-button" onclick="toggleProject('other2')">Close</button>
                 </div>
@@ -496,23 +337,21 @@
             <!-- Other 3 -->
             <div class="project-item" id="other3">
                 <div class="project-header" onclick="toggleProject('other3')">
-                    <h3 class="project-title">Evil Hangman</h3>
-                    <p class="project-date">January 2023 - May 2023</p>
-                    <p>Interactive Hangman game using advanced data structures like AVL trees and dynamic strings</p>
+                    <div class="project-header-text" style="padding-top:18px;">
+                        <h3 class="project-title">Evil Hangman</h3>
+                        <p class="project-date">January 2023 - May 2023</p>
+                        <p>Interactive Hangman game using AVL trees and dynamic strings</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="other3-expanded">
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/EvilHangman/tree/main" target="_blank">GitHub Repository</a></p>
-                    <ul class = "styled-list">
-                        <li>Designed and implemented a fully interactive Hangman game leveraging advanced data structures and algorithms for dynamic dictionary management and efficient gameplay logic, ensuring scalability and high performance.</li>
-                        <li>Engineered a dynamic <code>MY_STRING </code> abstract data type with built-in memory management, supporting operations such as concatenation, resizing, and lexicographical comparisons, while maintaining encapsulation through an opaque object design pattern.</li>
-                        <li>Utilized a self-balancing AVL Tree for managing word families dynamically during gameplay, optimizing word selection through efficient insertions, deletions, and lookups to maintain balanced tree operations.</li>
-                        <li>Integrated a generic vector implementation to enable flexible and reusable storage of dynamically allocated data, ensuring seamless integration with custom-defined data types like <code>MY_STRING</code>.</li>
-                        <li>Designed modular header and source files to adhere to software engineering best practices, including clear function declarations, type encapsulation, and separation of concerns for improved code readability and maintainability.</li>
-                        <li>Performed extensive file I/O operations to initialize and manage a dictionary, leveraging custom string extraction and insertion functions to handle data from external text files with robust error handling for edge cases.</li>
-                        <li>Developed a comprehensive unit testing framework using a modular approach, testing functions for correctness, edge case handling, and compliance with expected outputs, ensuring the integrity of the <code>MY_STRING</code>, AVL Tree, and generic vector components.</li>
-                        <li>Implemented interactive user prompts and input validation to ensure a user-friendly experience, including character-based guessing with feedback on invalid inputs and a running total of remaining words during gameplay.</li>
-                        <li>Optimized memory usage and runtime efficiency by implementing dynamic memory allocation with resizing for string and vector operations, avoiding unnecessary reallocations and ensuring efficient use of system resources.</li>
-                        <li>Adopted the C99 standard and compiled the program using GCC, leveraging portability and compliance with modern C programming practices for consistent behavior across platforms.</li>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/EvilHangman/tree/main" target="_blank">github.com/etan630/EvilHangman</a></p>
+                    <ul class="styled-list">
+                        <li>Designed a fully interactive Hangman game leveraging advanced data structures and algorithms for dynamic dictionary management.</li>
+                        <li>Engineered a dynamic MY_STRING abstract data type with built-in memory management, supporting concatenation, resizing, and lexicographical comparisons.</li>
+                        <li>Utilized a self-balancing AVL Tree for managing word families dynamically during gameplay, optimizing word selection through efficient insertions and deletions.</li>
+                        <li>Integrated a generic vector implementation for flexible and reusable storage of dynamically allocated data.</li>
+                        <li>Developed a comprehensive unit testing framework testing for correctness, edge cases, and compliance across MY_STRING, AVL Tree, and vector components.</li>
+                        <li>Compiled with GCC under the C99 standard for cross-platform compatibility.</li>
                     </ul>
                     <button class="dynamic-close-button" onclick="toggleProject('other3')">Close</button>
                 </div>
@@ -521,12 +360,14 @@
             <!-- Other 4 -->
             <div class="project-item" id="other4">
                 <div class="project-header" onclick="toggleProject('other4')">
-                    <h3 class="project-title">Solar Sails</h3>
-                    <p class="project-date">January 2023 - May 2023</p>
-                    <p>Telemetry system for a solar-powered drone network</p>
+                    <div class="project-header-text" style="padding-top:18px;">
+                        <h3 class="project-title">Solar Sails</h3>
+                        <p class="project-date">January 2023 - May 2023</p>
+                        <p>Telemetry system for a solar-powered drone network</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="other4-expanded">
-                    <p>Helped develop a Raspberry Pi-based telemetry system for a solar-powered drone network, utilizing Python to collect GPS module data and transmit it to a computer over Wi-Fi for real-time flight environment monitoring</p>
+                    <p>Helped develop a Raspberry Pi-based telemetry system for a solar-powered drone network, utilizing Python to collect GPS module data and transmit it to a computer over Wi-Fi for real-time flight environment monitoring.</p>
                     <button class="dynamic-close-button" onclick="toggleProject('other4')">Close</button>
                 </div>
             </div>
@@ -534,23 +375,21 @@
             <!-- Other 5 -->
             <div class="project-item" id="other5">
                 <div class="project-header" onclick="toggleProject('other5')">
-                    <h3 class="project-title">Custom Bit Flag Program</h3>
-                    <p class="project-date">April 2023</p>
-                    <p>Program that efficiently manages a dynamically resizable set of binary flags</p>
+                    <div class="project-header-text" style="padding-top:18px;">
+                        <h3 class="project-title">Custom Bit Flag Program</h3>
+                        <p class="project-date">April 2023</p>
+                        <p>Program that efficiently manages a dynamically resizable set of binary flags</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="other5-expanded">
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/CustomBitFlagProgam" target="_blank">GitHub Repository</a></p>
-                    <ul class = "styled-list">
-                        <li>Developed a high-performance C program leveraging bitwise operations to efficiently manage a large set of flags, allowing the tracking of up to billions of individual binary states with minimal memory overhead.</li>    
-                        <li>Implemented a dynamically resizable bit flags data structure using an abstract <code>BIT_FLAGS</code> type for encapsulation, enhancing code modularity and maintainability.</li>
-                        <li>Designed the program to support dynamic resizing of both capacity and size, optimizing resource usage by expanding or shrinking the internal bit array based on utilization patterns.</li>
-                        <li>Utilized bitwise operators (<code>|, &, ~, <<</code>) to set, unset, and check individual flags efficiently within the data structure, ensuring constant-time operations for flag manipulation.</li>
-                        <li>Provided comprehensive functionality for querying the size and capacity of the bit flags structure, enabling real-time insights into its current state and utilization.</li>
-                        <li>Ensured robust error handling by validating input parameters, such as ensuring non-negative flag positions and dynamically reallocating memory to accommodate larger flag indices.</li>
-                        <li>Incorporated input validation and a user-friendly command-line interface for flag management, including interactive user input and real-time updates to the internal flag states.</li>
-                        <li>Implemented a <code>bit_flags_destroy</code> function for proper memory deallocation, ensuring no memory leaks by freeing both the internal array and the structure itself.</li>
-                        <li>Designed the program to handle extreme scalability, with the ability to manage billions of flags without performance degradation, demonstrating its suitability for large-scale applications.</li>
-                        <li>Adhered to modern C programming standards and best practices, compiling with GCC to ensure cross-platform compatibility and efficient execution.</li>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/CustomBitFlagProgam" target="_blank">github.com/etan630/CustomBitFlagProgam</a></p>
+                    <ul class="styled-list">
+                        <li>Developed a high-performance C program leveraging bitwise operations to efficiently manage a large set of flags, tracking up to billions of individual binary states with minimal memory overhead.</li>
+                        <li>Implemented a dynamically resizable bit flags data structure using an abstract BIT_FLAGS type for encapsulation and modularity.</li>
+                        <li>Utilized bitwise operators (|, &, ~, &lt;&lt;) to set, unset, and check individual flags in constant time.</li>
+                        <li>Ensured robust error handling: non-negative flag position validation, dynamic reallocation for larger indices.</li>
+                        <li>Implemented bit_flags_destroy for proper memory deallocation with zero memory leaks.</li>
+                        <li>Designed for extreme scalability — billions of flags without performance degradation.</li>
                     </ul>
                     <button class="dynamic-close-button" onclick="toggleProject('other5')">Close</button>
                 </div>
@@ -559,60 +398,63 @@
             <!-- Other 6 -->
             <div class="project-item" id="other6">
                 <div class="project-header" onclick="toggleProject('other6')">
-                    <h3 class="project-title">Ferry Simulation</h3>
-                    <p class="project-date">February 2023</p>
-                    <p>Simulating ferry car loading process</p>
+                    <div class="project-header-text" style="padding-top:18px;">
+                        <h3 class="project-title">Ferry Simulation</h3>
+                        <p class="project-date">February 2023</p>
+                        <p>Simulating ferry car loading process</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="other6-expanded">
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/Ferry-Simulation" target="_blank">GitHub Repository</a></p>
-                    <ul class = "styled-list">
-                        <li>Implemented a dynamic queue to manage car loading and unloading efficiently, supporting enqueue, dequeue, and front operations for FIFO management with robust memory allocation and deallocation.</li>  
-                        <li>Ensured accurate user input through validation for ferry dimensions, car attributes, and bank assignment, with error messages prompting re-entry and safeguards against invalid queue operations.</li>  
-                        <li>Simulated ferry operations by alternating between left and right banks, tracking car sizes, and calculating the total number of crossings required based on ferry capacity constraints.</li>
-                        <li>Developed custom string comparison functions to handle user input without external libraries and mapped input to corresponding bank values, ensuring flexibility in handling case variations.</li>
-                        <li>Managed ferry position alternation across banks while cleaning up dynamically allocated memory for queues after each test case to prevent leaks and ensure efficient resource use.</li>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/Ferry-Simulation" target="_blank">github.com/etan630/Ferry-Simulation</a></p>
+                    <ul class="styled-list">
+                        <li>Implemented a dynamic queue to manage car loading and unloading efficiently with enqueue, dequeue, and front operations for FIFO management.</li>
+                        <li>Ensured accurate user input through validation for ferry dimensions, car attributes, and bank assignment.</li>
+                        <li>Simulated ferry operations by alternating between left and right banks, tracking car sizes and calculating total crossings required.</li>
+                        <li>Developed custom string comparison functions to handle user input without external libraries.</li>
+                        <li>Managed ferry position alternation across banks, cleaning up dynamically allocated memory after each test case.</li>
                     </ul>
                     <button class="dynamic-close-button" onclick="toggleProject('other6')">Close</button>
                 </div>
             </div>
 
-
             <!-- Other 7 -->
             <div class="project-item" id="other7">
                 <div class="project-header" onclick="toggleProject('other7')">
-                    <h3 class="project-title">Parenthesis Matcher</h3>
-                    <p class="project-date">February 2023</p>
-                    <p>Balanced parenthesis validator using stacks</p>
+                    <div class="project-header-text" style="padding-top:18px;">
+                        <h3 class="project-title">Parenthesis Matcher</h3>
+                        <p class="project-date">February 2023</p>
+                        <p>Balanced parenthesis validator using stacks</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="other7-expanded">
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/ParenthesisMatcher" target="_blank">GitHub Repository</a></p>
-                    <ul class = "styled-list">
-                        <li>Built a stack data structure using linked nodes, supporting essential operations like push, pop, and is_empty, with proper memory allocation and deallocation to manage dynamic data.</li>    
-                        <li>Designed the <code>isBalanced</code> function to validate whether user-input strings contain properly matched and nested parentheses, using a stack to manage opening and closing symbols.</li>
-                        <li>Ensured efficient memory usage by dynamically allocating memory for stack nodes during runtime and deallocating all allocated memory after validation.</li>
-                        <li>Implemented robust input handling for user-defined test cases and safeguarded against stack underflows with explicit checks and error messages during pop operations.</li>
-                        <li>Created the <code>isMatching</code> function to compare opening and closing parentheses, ensuring that only valid pairs (e.g., <code>(), {}, []</code>) are accepted.</li>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/ParenthesisMatcher" target="_blank">github.com/etan630/ParenthesisMatcher</a></p>
+                    <ul class="styled-list">
+                        <li>Built a stack data structure using linked nodes, supporting push, pop, and is_empty operations with proper memory allocation/deallocation.</li>
+                        <li>Designed the isBalanced function to validate whether strings contain properly matched and nested parentheses.</li>
+                        <li>Ensured efficient memory usage with dynamic allocation for stack nodes and full deallocation after validation.</li>
+                        <li>Implemented isMatching to compare opening and closing parentheses, accepting only valid pairs: (), {}, [].</li>
                     </ul>
                     <button class="dynamic-close-button" onclick="toggleProject('other7')">Close</button>
                 </div>
             </div>
 
-
             <!-- Other 8 -->
             <div class="project-item" id="other8">
                 <div class="project-header" onclick="toggleProject('other8')">
-                    <h3 class="project-title">WORDLE</h3>
-                    <p class="project-date">May 2022</p>
-                    <p>Console-based Java Wordle game</p>
+                    <div class="project-header-text" style="padding-top:18px;">
+                        <h3 class="project-title">WORDLE</h3>
+                        <p class="project-date">May 2022</p>
+                        <p>Console-based Java Wordle game</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="other8-expanded">
-                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/WORDLE" target="_blank">GitHub Repository</a></p>
-                    <ul class = "styled-list">
-                        <li>Developed a console-based Wordle game in Java, complete with ANSI color-coded feedback for player guesses to indicate correctness of letters and their placements.</li>    
-                        <li>Utilized an array of predefined 5-letter words and selected a random word as the Wordle answer for each game session, ensuring replayability.</li>
-                        <li>Added a visually enhanced ANSI interface for colored feedback (green, yellow, red) to represent correct placement, correct letter in wrong placement, and incorrect letters, respectively.</li>
-                        <li>Designed a playful mini-game for players who choose not to play Wordle, prompting them to identify a visual anomaly within a pattern.</li>
-                        <li>Ensured input accuracy by checking word length, providing error messages, and allowing re-entry while maintaining valid game state during each attempt.</li>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/etan630/WORDLE" target="_blank">github.com/etan630/WORDLE</a></p>
+                    <ul class="styled-list">
+                        <li>Developed a console-based Wordle game in Java with ANSI color-coded feedback for player guesses.</li>
+                        <li>Selected random 5-letter words from a predefined array as the Wordle answer for each session, ensuring replayability.</li>
+                        <li>Color-coded feedback: green (correct placement), yellow (wrong placement), red (incorrect).</li>
+                        <li>Designed a mini-game for players who choose not to play Wordle.</li>
+                        <li>Ensured input accuracy by checking word length and providing clear error messages.</li>
                     </ul>
                     <button class="dynamic-close-button" onclick="toggleProject('other8')">Close</button>
                 </div>
@@ -621,12 +463,14 @@
             <!-- Other 9 -->
             <div class="project-item" id="other9">
                 <div class="project-header" onclick="toggleProject('other9')">
-                    <h3 class="project-title">smartLunch</h3>
-                    <p class="project-date">February 2022</p>
-                    <p>Interactive lunch ordering system</p>
+                    <div class="project-header-text" style="padding-top:18px;">
+                        <h3 class="project-title">smartLunch</h3>
+                        <p class="project-date">February 2022</p>
+                        <p>Interactive lunch ordering system</p>
+                    </div>
                 </div>
                 <div class="project-expanded" id="other9-expanded">
-                    <p>Developed iOS application using Swift as an interactive lunch ordering system for schools to improve food distribution efficiency, reduce environmental food waste, and limit COVID-19 spread</p>
+                    <p>Developed iOS application using Swift as an interactive lunch ordering system for schools to improve food distribution efficiency, reduce environmental food waste, and limit COVID-19 spread.</p>
                     <button class="dynamic-close-button" onclick="toggleProject('other9')">Close</button>
                 </div>
             </div>
@@ -635,4 +479,3 @@
     </section>
 </body>
 </html>
-
