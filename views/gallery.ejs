@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+<% const galleryPhotos = chapter.photos ?? []; %>
+    <section class="wide-sheet photo-sheet">
+        <header class="chapter-heading">
+            <h1><%= chapter.label %></h1>
+            <% if (chapter.galleryNote) { %>
+                <p><%= chapter.galleryNote %></p>
+            <% } %>
+        </header>
+
+        <% if (!galleryPhotos.length) { %>
+            <p class="gallery-empty">Photographs coming soon.</p>
+        <% } else { %>
+            <div class="photo-grid">
+                <% for (const [index, photo] of galleryPhotos.entries()) { %>
+                    <figure class="photo-print" data-reveal>
+                        <a href="<%= photo.src %>" data-photo="<%= index %>" aria-label="View photograph: <%= photo.caption %>">
+                            <img src="<%= photo.src %>" alt="<%= photo.alt %>" <%- index < 4 ? '' : 'loading="lazy"' %>>
+                        </a>
+                        <figcaption><%= photo.caption %></figcaption>
+                    </figure>
+                <% } %>
+            </div>
+
+            <dialog class="photo-viewer" aria-label="Photograph" data-photo-viewer>
+                <div class="viewer-bar">
+                    <p class="viewer-count" aria-live="polite"></p>
+                    <form method="dialog"><button type="submit" class="viewer-close" aria-label="Close photograph" autofocus>×</button></form>
+                </div>
+                <figure class="viewer-photo">
+                    <img alt="">
+                    <figcaption></figcaption>
+                </figure>
+                <div class="viewer-controls">
+                    <button type="button" data-photo-step="-1" aria-label="Previous photograph">←</button>
+                    <button type="button" data-photo-step="1" aria-label="Next photograph">→</button>
+                </div>
+            </dialog>
+        <% } %>
+    </section>
+<%- include('partials/footer') %>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="<%= description %>">
+    <meta name="theme-color" content="#211e1b">
+    <title><%= title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:wght@400;500;600&family=Explora&family=IBM+Plex+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/script.js" defer></script>
+    <script src="/pond.js" type="module"></script>
+    <% if (next) { %><script src="/page-turn.js" type="module"></script><% } %>
+</head>
+<body class="chapter-<%= chapter.view %>">
+    <a class="skip-link" href="#journal">Skip to the journal</a>
+    <div class="pond-backdrop" aria-hidden="true"><canvas id="pond"></canvas></div>
+
+    <header class="site-header">
+        <a class="wordmark" href="/" aria-label="Erin Tan, journal cover">
+            <span class="monogram" aria-hidden="true">et</span>
+            <span>Erin Tan</span>
+        </a>
+        <div class="header-actions">
+            <button type="button" class="pond-toggle" hidden>Pause pond</button>
+            <a class="header-contact" href="/contact" <%- chapter.view === 'contact' ? 'aria-current="page"' : '' %>>
+                Get in touch <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="journal">
+        <nav class="bookmarks" aria-label="Journal chapters">
+            <% for (const tab of chapters.filter(item => item.view !== 'contact')) { %>
+                <a href="<%= tab.path %>" <% if (tab === chapter) { %>aria-current="<%= entry ? 'location' : 'page' %>"<% } %>><%= tab.tabLabel || tab.label %></a>
+            <% } %>
+        </nav>
+        <div class="book-cover">
+            <main id="journal" class="book book--<%= chapter.view %><%= next ? ' book--turnable' : '' %>" tabindex="-1">

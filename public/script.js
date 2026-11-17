@@ -1,123 +1,102 @@
-// Smooth scrolling for the navigation bar
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const targetSection = document.querySelector(this.getAttribute('href'));
-        if (targetSection) {
-            e.preventDefault();
-            window.scrollTo({
-                top: targetSection.offsetTop - 60,
-                behavior: 'smooth' // This ensures smooth scrolling
-            });
+// Map the original landing page's section links to their journal chapters.
+const legacyChapters = new Map([
+    ['#about', '/about'],
+    ['#resume', '/resume'],
+    ['#contact', '/contact']
+]);
+
+if (location.pathname === '/' && legacyChapters.has(location.hash)) {
+    location.replace(legacyChapters.get(location.hash));
+}
+
+const motion = window.matchMedia('(prefers-reduced-motion: no-preference)');
+if (motion.matches && 'IntersectionObserver' in window) {
+    const reveal = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.classList.add('is-revealed');
+            reveal.unobserve(entry.target);
+        }
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('[data-reveal], .project-item').forEach(item => reveal.observe(item));
+}
+
+const projects = document.querySelectorAll('.project-item');
+for (const project of projects) {
+    const close = project.querySelector('.project-close');
+    close.hidden = false;
+    close.addEventListener('click', () => {
+        project.open = false;
+        project.querySelector('summary').focus();
+    });
+    project.addEventListener('toggle', () => {
+        if (!project.open) {
+            project.querySelectorAll('video').forEach(video => video.pause());
         }
     });
+}
+
+function openLinkedProject() {
+    const project = document.getElementById(location.hash.slice(1));
+    if (project?.classList.contains('project-item')) project.open = true;
+}
+
+if (projects.length) {
+    openLinkedProject();
+    window.addEventListener('hashchange', openLinkedProject);
+}
+
+const spotifyDemo = document.getElementById('spotifyVideo');
+spotifyDemo?.addEventListener('volumechange', () => {
+    if (!spotifyDemo.muted) spotifyDemo.muted = true;
 });
 
-// Detect the section currently in view and highlight the corresponding nav link
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav ul li a");
+const viewer = document.querySelector('[data-photo-viewer]');
+if (typeof viewer?.showModal === 'function') {
+    const photos = [...document.querySelectorAll('[data-photo]')];
+    const image = viewer.querySelector('img');
+    const caption = viewer.querySelector('figcaption');
+    const count = viewer.querySelector('.viewer-count');
+    let current = 0;
+    let opener;
 
-window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.pageYOffset >= sectionTop - 60) {
-            current = section.getAttribute("id");
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href").includes(current)) {
-            link.classList.add("active");
-        }
-    });
-});
-
-
-let slideIndex = 0;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
-
-function showSlides(n) {
-    const slides = document.getElementsByClassName("slide");
-    
-    if (n >= slides.length) {
-        slideIndex = 0; // Loop back to the first slide
-    }
-    if (n < 0) {
-        slideIndex = slides.length - 1; // Go to the last slide
+    function showPhoto(index) {
+        current = (index + photos.length) % photos.length;
+        const link = photos[current];
+        image.src = link.href;
+        image.alt = link.querySelector('img').alt;
+        caption.textContent = link.closest('figure').querySelector('figcaption').textContent;
+        count.textContent = `${current + 1} / ${photos.length}`;
     }
 
-    // Hide all slides
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-
-    // Show the current slide
-    slides[slideIndex].style.display = "block";
-}
-
-// Create a reference to the dynamic close button
-let dynamicCloseButton;
-
-// Initialize the dynamic close button
-function createDynamicCloseButton() {
-    dynamicCloseButton = document.createElement('button');
-    dynamicCloseButton.textContent = 'Close';
-    dynamicCloseButton.classList.add('dynamic-close-button', 'hidden');
-    dynamicCloseButton.addEventListener('click', closeExpandedProject);
-    document.body.appendChild(dynamicCloseButton);
-}
-
-// Function to toggle the expanded project and manage the button
-function toggleProject(projectId) {
-    const projectItem = document.getElementById(projectId);
-    const expanded = document.getElementById(`${projectId}-expanded`);
-
-    if (projectItem.classList.contains('expanded')) {
-        // Collapse the card
-        projectItem.classList.remove('expanded');
-        expanded.style.display = 'none';
-    } else {
-        // Collapse all other cards first
-        document.querySelectorAll('.project-item.expanded').forEach(item => {
-            item.classList.remove('expanded');
-            const itemExpanded = item.querySelector('.project-expanded');
-            if (itemExpanded) itemExpanded.style.display = 'none';
+    for (const photo of photos) {
+        photo.addEventListener('click', event => {
+            if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            opener = photo;
+            showPhoto(Number(photo.dataset.photo));
+            viewer.showModal();
         });
-
-        // Expand the selected card
-        projectItem.classList.add('expanded');
-        expanded.style.display = 'block';
     }
-}
 
-
-// Function to close the currently expanded project
-function closeExpandedProject() {
-    const expandedItems = document.querySelectorAll('.project-item.expanded');
-    expandedItems.forEach((item) => item.classList.remove('expanded'));
-    dynamicCloseButton.classList.add('hidden');
-}
-
-// Update the button's position relative to the expanded project
-function updateButtonPosition(projectItem) {
-    const rect = projectItem.getBoundingClientRect();
-    dynamicCloseButton.style.top = `${rect.top + window.scrollY + 10}px`;
-    dynamicCloseButton.style.right = `${window.innerWidth - rect.right + 10}px`;
-}
-
-// Listen for scroll events to update the button's position dynamically
-window.addEventListener('scroll', () => {
-    const expandedItems = document.querySelectorAll('.project-item.expanded');
-    if (expandedItems.length > 0) {
-        updateButtonPosition(expandedItems[0]); // Position the button relative to the first expanded project
+    for (const button of viewer.querySelectorAll('[data-photo-step]')) {
+        button.addEventListener('click', () => showPhoto(current + Number(button.dataset.photoStep)));
     }
-});
 
-// Initialize the button on page load
-document.addEventListener('DOMContentLoaded', createDynamicCloseButton);
+    viewer.addEventListener('keydown', event => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        showPhoto(current + (event.key === 'ArrowLeft' ? -1 : 1));
+    });
+
+    viewer.addEventListener('click', event => {
+        if (event.target !== viewer) return;
+        const { left, right, top, bottom } = viewer.getBoundingClientRect();
+        if (event.clientX < left || event.clientX > right || event.clientY < top || event.clientY > bottom) {
+            viewer.close();
+        }
+    });
+
+    viewer.addEventListener('close', () => opener?.focus());
+}

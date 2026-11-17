@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+    <article class="wide-sheet reading-sheet">
+        <a class="ink-link" href="/writing"><span aria-hidden="true">←</span> All entries</a>
+        <header class="chapter-heading">
+            <p class="eyebrow"><time datetime="<%= entry.date %>"><%= formatDate(entry.date) %></time></p>
+            <h1><%= entry.title %></h1>
+            <p><%= entry.summary %></p>
+        </header>
+        <% for (const paragraph of entry.paragraphs) { %>
+            <p><%= paragraph %></p>
+        <% } %>
+    </article>
+<%- include('partials/footer') %>

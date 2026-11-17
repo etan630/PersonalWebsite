@@ -1,0 +1,25 @@
+            </main>
+            <% if (next) { %>
+                <a class="page-corner" href="<%= next.path %>" rel="next" data-page-turn draggable="false"
+                    aria-label="Flip to <%= next.label %>" title="Drag or click to flip to <%= next.label %>">
+                    <span aria-hidden="true">→</span>
+                </a>
+            <% } %>
+        </div>
+
+        <nav class="page-turn" aria-label="Turn the page">
+            <div>
+                <% if (previous) { %>
+                    <a href="<%= previous.path %>" rel="prev"><span aria-hidden="true">←</span> <%= previous.label %></a>
+                <% } %>
+            </div>
+            <span class="page-count" aria-label="Chapter <%= position.replace('/', 'of') %>"><%= position %></span>
+            <div>
+                <% if (next) { %>
+                    <a href="<%= next.path %>" rel="next" data-page-turn><%= next.label %> <span aria-hidden="true">→</span></a>
+                <% } %>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

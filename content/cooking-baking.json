@@ -1,0 +1,10 @@
+[
+  { "src": "/food1.jpeg", "caption": "Strawberry cake", "alt": "Layer cake topped with a ring of halved strawberries" },
+  { "src": "/food4.jpeg", "caption": "Fresh bread", "alt": "A scored, golden loaf of bread on parchment" },
+  { "src": "/food7.jpeg", "caption": "Swirled buns", "alt": "Purple-swirled buns cooling on a baking sheet" },
+  { "src": "/food6.jpeg", "caption": "Cake in red", "alt": "White frosted cake with sliced strawberries and red glaze" },
+  { "src": "/food2.jpeg", "caption": "Chocolate cookies", "alt": "Dark cookies dotted with white chocolate on two baking trays" },
+  { "src": "/food3.jpeg", "caption": "Flaky pastry", "alt": "Golden folded pastry on a gray plate" },
+  { "src": "/food5.jpeg", "caption": "Cookie characters", "alt": "Small animal-shaped cookies with iced faces on a blue-gray plate" },
+  { "src": "/food8.jpeg", "caption": "Hand-folded dumplings", "alt": "Rows of pleated dumplings on a gray plate" }
+]
