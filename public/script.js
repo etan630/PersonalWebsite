@@ -56,7 +56,9 @@ const viewer = document.querySelector('[data-photo-viewer]');
 if (typeof viewer?.showModal === 'function') {
     const photos = [...document.querySelectorAll('[data-photo]')];
     const image = viewer.querySelector('img');
-    const caption = viewer.querySelector('figcaption');
+    const caption = viewer.querySelector('.viewer-caption');
+    const title = viewer.querySelector('#viewer-title');
+    const excerpt = viewer.querySelector('.viewer-excerpt');
     const count = viewer.querySelector('.viewer-count');
     let current = 0;
     let opener;
@@ -66,8 +68,14 @@ if (typeof viewer?.showModal === 'function') {
         const link = photos[current];
         image.src = link.href;
         image.alt = link.querySelector('img').alt;
-        caption.textContent = link.closest('figure').querySelector('figcaption').textContent;
+        title.textContent = link.closest('figure').querySelector('figcaption').textContent;
+        const text = link.dataset.excerpt?.trim() ?? '';
+        excerpt.textContent = text;
+        excerpt.hidden = !text;
+        viewer.toggleAttribute('data-has-excerpt', Boolean(text));
         count.textContent = `${current + 1} / ${photos.length}`;
+        caption.tabIndex = text ? 0 : -1;
+        caption.scrollTop = 0;
     }
 
     for (const photo of photos) {
@@ -85,6 +93,7 @@ if (typeof viewer?.showModal === 'function') {
     }
 
     viewer.addEventListener('keydown', event => {
+        if (photos.length < 2) return;
         if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
         event.preventDefault();
         showPhoto(current + (event.key === 'ArrowLeft' ? -1 : 1));

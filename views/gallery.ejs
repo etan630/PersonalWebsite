@@ -14,7 +14,8 @@
             <div class="photo-grid">
                 <% for (const [index, photo] of galleryPhotos.entries()) { %>
                     <figure class="photo-print" data-reveal>
-                        <a href="<%= photo.src %>" data-photo="<%= index %>" aria-label="View photograph: <%= photo.caption %>">
+                        <a href="<%= photo.src %>" data-photo="<%= index %>" data-excerpt="<%= photo.excerpt %>"
+                            aria-label="View photograph: <%= photo.caption %>">
                             <img src="<%= photo.src %>" alt="<%= photo.alt %>" <%- index < 4 ? '' : 'loading="lazy"' %>>
                         </a>
                         <figcaption><%= photo.caption %></figcaption>
@@ -22,19 +23,24 @@
                 <% } %>
             </div>
 
-            <dialog class="photo-viewer" aria-label="Photograph" data-photo-viewer>
+            <dialog class="photo-viewer" aria-labelledby="viewer-title" data-photo-viewer>
                 <div class="viewer-bar">
-                    <p class="viewer-count" aria-live="polite"></p>
+                    <p class="viewer-count" aria-live="polite" <%= galleryPhotos.length === 1 ? 'hidden' : '' %>></p>
+                    <% if (galleryPhotos.length > 1) { %>
+                        <div class="viewer-controls">
+                            <button type="button" data-photo-step="-1" aria-label="Previous photograph">←</button>
+                            <button type="button" data-photo-step="1" aria-label="Next photograph">→</button>
+                        </div>
+                    <% } %>
                     <form method="dialog"><button type="submit" class="viewer-close" aria-label="Close photograph" autofocus>×</button></form>
                 </div>
                 <figure class="viewer-photo">
-                    <img alt="">
-                    <figcaption></figcaption>
+                    <div class="viewer-image"><img alt=""></div>
+                    <figcaption class="viewer-caption">
+                        <h2 id="viewer-title"></h2>
+                        <p class="viewer-excerpt" hidden></p>
+                    </figcaption>
                 </figure>
-                <div class="viewer-controls">
-                    <button type="button" data-photo-step="-1" aria-label="Previous photograph">←</button>
-                    <button type="button" data-photo-step="1" aria-label="Next photograph">→</button>
-                </div>
             </dialog>
         <% } %>
     </section>

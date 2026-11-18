@@ -37,6 +37,7 @@ body {
     position: fixed;
     z-index: -1;
     inset: 0;
+    overflow: hidden;
     pointer-events: none;
     background:
         radial-gradient(ellipse at 12% 20%, #5b64484f, transparent 53%),
@@ -44,7 +45,13 @@ body {
         repeating-linear-gradient(115deg, #fff6dd04 0 1px, transparent 1px 4px),
         linear-gradient(155deg, #312d24, var(--desk) 62%);
 }
-.pond-backdrop canvas { display: block; width: 100%; height: 100%; }
+.pond-backdrop canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
 
 h1, h2, h3, h4, p, figure { margin: 0; }
 p + p { margin-top: .9em; }
@@ -163,7 +170,6 @@ a { color: inherit; }
     border-radius: 16px;
     background: var(--binding);
     box-shadow: 0 4px 0 #424b30, 0 24px 50px #100e0b9c;
-    view-transition-name: journal-book;
 }
 .book-cover::before {
     position: absolute;
@@ -524,6 +530,7 @@ h4 { font-size: 1.3rem; }
     gap: clamp(16px, 3.1vw, 34px) clamp(11px, 2.35vw, 27px);
     padding: 8px 3px;
 }
+.chapter-photography .photo-grid { align-items: start; }
 .photo-print {
     --rotation: -2deg;
     position: relative;
@@ -544,7 +551,8 @@ h4 { font-size: 1.3rem; }
 }
 .photo-print::before { width: 50px; height: 15px; top: -7px; }
 .photo-print a { display: block; }
-.photo-print img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.photo-print img { width: 100%; height: auto; }
+.chapter-gallery .photo-print img { aspect-ratio: 3 / 4; object-fit: cover; }
 .photo-print figcaption {
     display: grid;
     place-items: center;
@@ -557,33 +565,97 @@ h4 { font-size: 1.3rem; }
 
 body:has(.photo-viewer[open]) { overflow: hidden; }
 .photo-viewer {
-    width: min(94vw, 620px);
-    max-height: 94vh;
-    max-height: 94dvh;
+    width: min(94vw, 680px);
+    height: min(82vh, 720px);
+    height: min(82dvh, 720px);
     margin: auto;
-    padding: 13px 20px;
-    overflow: auto;
+    padding: 0;
+    overflow: hidden;
     border: 1px solid var(--binding);
-    border-radius: 8px;
+    border-radius: 12px;
     background: var(--paper-light);
     color: var(--ink);
     box-shadow: 0 10px 56px #140a08a6;
 }
+.photo-viewer[open] { display: grid; grid-template-rows: auto minmax(0, 1fr); }
 .photo-viewer::backdrop { background: #16110eeb; }
-.viewer-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.viewer-photo img { width: 100%; height: min(62vh, 62dvh); object-fit: contain; }
-.viewer-photo figcaption { margin-top: 8px; text-align: center; }
-.viewer-controls { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
+.viewer-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 6px 12px 6px 18px;
+    border-bottom: 1px solid var(--line);
+}
+.viewer-bar form { margin-inline-start: auto; }
+.viewer-photo { display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 0; }
+.viewer-image {
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    min-height: 0;
+    padding: clamp(10px, 2.2vw, 28px);
+    background: #232820;
+}
+.viewer-image img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+.viewer-caption {
+    min-height: 0;
+    padding: 14px 20px;
+    overflow: auto;
+    overscroll-behavior: contain;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+.viewer-caption:focus-visible { outline-offset: -5px; }
+#viewer-title { color: var(--accent-deep); font: 600 1rem/1.2 var(--sans); letter-spacing: -.025em; }
+.photo-viewer:not([data-has-excerpt]) .viewer-caption { max-height: 20vh; }
+.photo-viewer[data-has-excerpt] {
+    width: min(94vw, 1200px);
+    height: min(88vh, 760px);
+    height: min(88dvh, 760px);
+}
+.photo-viewer[data-has-excerpt] .viewer-caption {
+    padding: clamp(22px, 3vw, 40px);
+    text-align: left;
+    scrollbar-width: thin;
+    scrollbar-color: var(--binding) transparent;
+}
+.photo-viewer[data-has-excerpt] #viewer-title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+}
+.viewer-excerpt {
+    margin-top: 16px;
+    font: 400 1rem/1.75 var(--sans);
+    white-space: pre-line;
+}
+
+@media (min-width: 721px) {
+    .photo-viewer[data-has-excerpt] .viewer-photo {
+        grid-template: minmax(0, 1fr) / minmax(0, 1.85fr) minmax(280px, 1fr);
+    }
+}
+@media (max-width: 720px) {
+    .photo-viewer[data-has-excerpt] .viewer-photo { grid-template-rows: auto minmax(0, 1fr); }
+    .photo-viewer[data-has-excerpt] .viewer-image img {
+        height: auto;
+        max-height: 34vh;
+        max-height: 34dvh;
+    }
+}
+
+.viewer-controls { display: flex; gap: 4px; }
 .viewer-close, .viewer-controls button {
     min-width: 44px;
     min-height: 44px;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    color: var(--accent);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--accent-deep);
     background: transparent;
     cursor: pointer;
 }
-.viewer-close:hover, .viewer-controls button:hover { background: #f2dec2; }
+.viewer-close { border-color: var(--line); font-size: 1.45rem; line-height: 1; }
+.viewer-close:hover, .viewer-controls button:hover { background: #ede1c8; }
 
 .writing-page {
     background-image: repeating-linear-gradient(transparent 0 32px, #87966a30 32px 33px);
@@ -667,14 +739,6 @@ body:has(.photo-viewer[open]) { overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    @view-transition { navigation: auto; }
-    ::view-transition-group(journal-book) { animation-duration: 420ms; }
-    ::view-transition-old(journal-book) { animation: paper-out 270ms ease-in both; }
-    ::view-transition-new(journal-book) {
-        transform-origin: left center;
-        animation: paper-in 420ms cubic-bezier(.19, .68, .29, 1) both;
-    }
-
     .is-revealed {
         animation: settle-onto-page 480ms cubic-bezier(.2, .64, .36, 1) var(--reveal-delay, 0ms) backwards;
     }
@@ -693,14 +757,6 @@ body:has(.photo-viewer[open]) { overflow: hidden; }
 @keyframes settle-onto-page {
     from { opacity: .35; translate: 0 var(--reveal-rise, 11px); }
     to { opacity: 1; translate: 0 0; }
-}
-
-@keyframes paper-out {
-    to { opacity: 0; filter: brightness(.82); }
-}
-@keyframes paper-in {
-    from { opacity: 0; transform: perspective(1400px) rotateY(-13deg) translateX(12px); }
-    to { opacity: 1; transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -153,7 +153,7 @@ function startPond(canvas, button, book) {
         { lane: 3, start: 4.28, speed: .24, size: .78, markOffset: 4, colors: koiColors.ivory }
     ].map(config => ({ ...config, phase: config.start, driftX: 0, driftY: 0 }));
 
-    let width, height, lanes, lilies, mobile;
+    let width, height, pixelRatio, lanes, lilies, mobile;
     let tap = null;
     let hover = null;
     let lastHoverRipple = null;
@@ -163,9 +163,14 @@ function startPond(canvas, button, book) {
     let frame = 0;
 
     function layout() {
-        width = canvas.clientWidth;
-        height = canvas.clientHeight;
+        const nextWidth = canvas.clientWidth;
+        const nextHeight = canvas.clientHeight;
         const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        if (nextWidth === width && nextHeight === height && ratio === pixelRatio) return;
+
+        width = nextWidth;
+        height = nextHeight;
+        pixelRatio = ratio;
         canvas.width = Math.round(width * ratio);
         canvas.height = Math.round(height * ratio);
         context.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -339,6 +344,7 @@ function startPond(canvas, button, book) {
         sync();
     });
     window.addEventListener('resize', layout, { passive: true });
+    if ('ResizeObserver' in window) new ResizeObserver(layout).observe(canvas);
     window.addEventListener('pointermove', event => {
         if (paused || event.pointerType !== 'mouse') return;
         if (isWater(event.target)) {

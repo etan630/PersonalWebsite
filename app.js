@@ -6,7 +6,6 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(__dirname, 'public')));
 
 for (const chapter of chapters) {
     app.get(chapter.path, (req, res) => res.render(chapter.view, pageLocals(chapter)));
@@ -18,6 +17,8 @@ app.get('/writing/:slug', (req, res, next) => {
 
     res.render('entry', pageLocals(writingChapter, entry));
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
