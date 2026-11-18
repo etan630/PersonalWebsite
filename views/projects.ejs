@@ -6,34 +6,140 @@
         </header>
 
         <div class="project-grid">
+            <details class="project-item" id="cloud-computing" name="projects">
+                <summary class="project-header">
+                    <img src="/project_images/cloud-computing-sdn-topology.png" alt="" loading="lazy" class="project-image">
+                    <span class="project-header-text">
+                        <span class="project-title">Cloud Computing Systems and Networks</span>
+                        <span class="project-date">August 2026 – Present</span>
+                        <span class="project-description">Adaptive OpenFlow routing, stateful firewall and NAT scaling, and distributed Rust MapReduce on Azure Kubernetes Service.</span>
+                    </span>
+                    <span class="project-mark" aria-hidden="true"></span>
+                </summary>
+                <div class="project-expanded" id="cloud-computing-expanded">
+                    <section>
+                        <h3>Software-Defined Networking and Adaptive Routing</h3>
+                        <p>An OS-Ken controller discovers network links, models them as a directed graph, and installs forwarding rules on Open vSwitch. It can select routes based on total latency, bottleneck capacity, or measured traffic. In Mininet, the shortest-path policy picked a 2 ms route with a 20 Mbps bottleneck. The widest-path policy picked an 80 Mbps route with 33 ms of inter-switch latency.</p>
+                        <img src="/project_images/cloud-computing-sdn-topology.png" alt="Mininet topology with two low-delay 20 Mbps routes and an alternate 80 Mbps route with higher latency." loading="lazy">
+                        <p>The adaptive controller estimates flow demand from sampled byte counters and subtracts that demand from the configured capacity of each link the flow traverses. One policy uses the remaining capacity to place new flows. The redistribution policy also reevaluates active flows periodically, assigns routes to the highest-volume flows first, and updates switch rules.</p>
+                        <p>Under load, two flows offered a combined 85 Mbps on an 80 Mbps route. Moving the smaller flow onto a 20 Mbps alternative increased traffic delivery from <strong>93.14% to 97.11%</strong> during the measured interval. With a longer averaging window, the controller reacted later and delivered 90.42% under the same workload.</p>
+                        <img src="/project_images/cloud-computing-routing-results.png" alt="Traffic delivery and per-flow bandwidth across the proactive controller and four redistribution settings." loading="lazy">
+                        <p>I built parts of the Mininet topology and controller, tested the routing policies, and contributed fixes to bandwidth monitoring and redistribution.</p>
+
+                        <h4>Technology Stack</h4>
+                        <p><strong>Control plane</strong> (Python, OS-Ken, OpenFlow 1.3) &nbsp;|&nbsp; <strong>Network emulation</strong> (Mininet, Open vSwitch) &nbsp;|&nbsp; <strong>Validation</strong> (iperf, OpenFlow counters)</p>
+                    </section>
+
+                    <section>
+                        <h3>Network Function Virtualization</h3>
+                        <p>The control plane adds firewall and network address translation (NAT) capacity while keeping established TCP connections on their assigned instances. A REST API in the OS-Ken process registers service chains, starts Docker containers, and connects their interfaces to Open vSwitch before making them available to the controller. The deployment ran two chains on shared switches, one with a firewall followed by NAT and one with NAT alone.</p>
+                        <p>The controller assigns each new TCP connection to instances in round-robin order and records that assignment for the lifetime of the flow. NAT can rewrite both an IP address and a TCP port. The controller records the translated reply tuple when traffic exits the NAT so return packets reach the same container and its Linux connection-tracking state. The switches use installed OpenFlow rules for subsequent packets.</p>
+                        <p>All <strong>16 new TCP echo connections</strong> completed after scale-up, with traffic split across the original and added firewall and NAT instances on the first chain. In a separate test, two connections were already exchanging data when we scaled the chain. Both completed using their original instance assignments.</p>
+                        <p>I set up the Docker and Open vSwitch topology, debugged forwarding logic, and ran the scale-up and connection-affinity tests.</p>
+
+                        <h4>Technology Stack</h4>
+                        <p><strong>Control plane</strong> (Python, OS-Ken, REST, OpenFlow 1.3) &nbsp;|&nbsp; <strong>Infrastructure</strong> (Docker, Open vSwitch, Linux iptables) &nbsp;|&nbsp; <strong>Validation</strong> (TCP echo, OpenFlow and interface counters)</p>
+                    </section>
+
+                    <section>
+                        <h3>Distributed MapReduce on Azure</h3>
+                        <p>A Rust scheduler dispatches map and reduce tasks to worker replicas on Azure Kubernetes Service (AKS). The scheduler and workers run as separate Kubernetes deployments and pull their images from Azure Container Registry. Workers register through etcd leases, and the scheduler watches for new workers and dispatches tasks over gRPC. Azure Blob Storage holds inputs, intermediate partitions, and final output. The same components can run locally with kind.</p>
+                        <ol class="styled-list">
+                            <li><strong>Map.</strong> The scheduler treats the blobs in an input container as one dataset and divides their bytes among map tasks. A map task can read ranges from multiple blobs. Workers run the submitted Python mapper, then hash each key to a reducer partition so equal keys meet at the same reducer.</li>
+                            <li><strong>Shuffle and reduce.</strong> Each mapper writes one blob per partition. After mapping completes, each reducer fetches its partition from every mapper, sorts the records by key, runs the submitted Python reducer, and writes an output blob.</li>
+                            <li><strong>Coordinate replicas.</strong> The replication design uses etcd for leader election and gRPC to replicate worker, job, and task state. A new follower receives a copy of the tables. On promotion, a follower resets in-progress work and attempts to rerun unfinished jobs.</li>
+                        </ol>
+                        <p>I validated the team’s AKS deployment with an end-to-end word-count job using three map tasks and two reduce tasks. I combined and sorted the reducer outputs and confirmed an exact match against the reference counts for that input.</p>
+
+                        <h4>Technology Stack</h4>
+                        <p><strong>Compute</strong> (Rust, Tokio, Python) &nbsp;|&nbsp; <strong>Infrastructure</strong> (Docker, Kubernetes, Azure Kubernetes Service, Azure Container Registry) &nbsp;|&nbsp; <strong>Coordination and storage</strong> (etcd, gRPC, Protocol Buffers, Azure Blob Storage)</p>
+                    </section>
+                    <button class="ink-link project-close" type="button" hidden>Close project <span aria-hidden="true">↑</span></button>
+                </div>
+            </details>
             <details class="project-item" id="enoki" name="projects">
                 <summary class="project-header">
+                    <img src="/project_images/enoki-search.jpg" alt="" loading="lazy" class="project-image">
                     <span class="project-header-text">
                         <span class="project-title">Enoki</span>
                         <span class="project-date">January 2026 – Present</span>
-                        <span class="project-description">A startup project that matches industry research needs with university researchers using natural-language search.</span>
+                        <span class="project-description">A research matchmaking platform that helps university corporate engagement teams find faculty for industry partnerships.</span>
                     </span>
                     <span class="project-mark" aria-hidden="true"></span>
                 </summary>
                 <div class="project-expanded" id="enoki-expanded">
-                    <h3>Researcher matching</h3>
-                    <p>Built the frontend with React and TypeScript and the backend with FastAPI. The retrieval pipeline combines BM25 keyword search, vector embeddings, LLM query expansion, reciprocal rank fusion, and LLM reranking.</p>
-                    <p>Built pipelines that collect and enrich researcher profiles from Georgia Tech faculty sources and scholarly publication APIs, then store them in PostgreSQL with pgvector.</p>
+                    <h3>Project Overview</h3>
+                    <p>My Georgia Tech CREATE-X team built Enoki for corporate engagement staff. A company may describe a problem in business terms, while faculty describe related work in the language of their fields. Staff can enter the original request, review a ranked list of researchers, and open their profiles and publications to decide whom to contact.</p>
+                    <img src="/project_images/enoki-architecture.jpg" alt="Enoki system architecture. Faculty directories, DBLP, and Semantic Scholar feed a PostgreSQL index. Search expands the request, combines four retrieval rankings, and reranks faculty for the results view." loading="lazy">
+
+                    <h3>Product Design</h3>
+                    <p>Enoki starts with a natural-language search box. Staff can add a constraint without retyping the original request, and keyword tags show how the system interpreted it. Result cards give a relevance score and short, query-specific reasons for each match. Opening a profile reveals the researcher’s background, research summary, publication links, and contact information. A profile-specific chat assistant can look up that researcher’s indexed papers to answer follow-up questions.</p>
+                    <img src="/project_images/enoki-search.jpg" alt="Enoki results for robust autonomous vehicles, showing relevance scores and brief explanations for the top faculty matches." loading="lazy">
+
+                    <h3>Faculty Data and Indexing</h3>
+                    <p>The ingestion pipeline starts with Georgia Tech’s College of Computing directory, uses DBLP to find author name variants, and resolves those names to Semantic Scholar author records and publications. It saves the directory profile first so a failed publication lookup can be retried without losing the faculty record.</p>
+                    <p>The pipeline can run scraping, summarization, and embedding generation independently. It summarizes papers and faculty research, generates 1,536-dimensional OpenAI embeddings in batches, and refreshes the full-text search fields after embedding. PostgreSQL stores faculty records, publications, and authorship links alongside their embeddings. GIN indexes support full-text queries, and pgvector computes cosine similarity in the same database.</p>
+
+                    <h3>Hybrid Search and Reranking</h3>
+                    <ol class="styled-list">
+                        <li><strong>Expand the request.</strong> GPT-4o mini translates the industry brief into academic terminology. The search uses concise terms for keyword matching and embeds the expanded text for semantic matching.</li>
+                        <li><strong>Retrieve from four rankings.</strong> PostgreSQL runs full-text and vector searches over both faculty profiles and individual papers. Keyword results use PostgreSQL’s <code>ts_rank_cd</code> ranking. The system maps paper hits back to their authors and uses reciprocal rank fusion to combine the lists, so a relevant paper can surface a researcher whose profile doesn’t contain the same terms.</li>
+                        <li><strong>Rerank a shortlist.</strong> The API fetches candidate profiles and prioritizes papers that drove the retrieval match. GPT-4o then scores the shortlisted researchers in parallel and returns plain-language match reasons. Keeping model scoring to the shortlist limits calls per query.</li>
+                    </ol>
+
+                    <h3>AWS Infrastructure and Deployment</h3>
+                    <ul class="styled-list">
+                        <li><strong>Web and API.</strong> CloudFront serves the React build from S3, with an <code>index.html</code> fallback for client-side routes. An HTTPS Application Load Balancer routes API requests to Dockerized FastAPI tasks on ECS Fargate and runs health checks during deployments.</li>
+                        <li><strong>Storage and access.</strong> Amazon RDS runs PostgreSQL 16 with pgvector. The database is configured without public access and with automated backups. FastAPI validates signed tokens and selects the university’s PostgreSQL schema for research queries. Account and tenant records live in shared tables.</li>
+                        <li><strong>Operations.</strong> AWS Systems Manager Parameter Store supplies credentials to the API tasks, and CloudWatch collects logs. Tenant setup and ingestion run as one-off Fargate tasks independently of the API service. A validation script checks for gaps in publications, summaries, and embeddings.</li>
+                        <li><strong>Delivery.</strong> AWS CDK defines separate frontend and backend CloudFormation stacks. GitHub Actions builds and ships the frontend to S3, then invalidates the CloudFront cache. The backend workflow pushes a Git-SHA-tagged image to ECR and updates the ECS service. The ECS deployment circuit breaker enables automatic rollback when a rollout fails to stabilize.</li>
+                    </ul>
+
+                    <h3>My Contribution</h3>
+                    <p>I prototyped saved searches across the React interface, FastAPI endpoints, and PostgreSQL schema. Each bookmark saves the original query, its refinement context, and a JSONB snapshot of the ranked results. Reopening a bookmark restores those matches without calling the models again. Older bookmarks without snapshots can still rerun the original search.</p>
+
+                    <h3>Pilot Evaluation</h3>
+                    <p>Georgia Tech Corporate Engagement staff tested Enoki with real industry requests and reported that it surfaced promising faculty they had missed in their initial search. The team also checked expected matches on known queries such as “drone SLAM.” The pilot identified model latency as a bottleneck for staff who want to refine a search several times in one sitting.</p>
+
+                    <h3>Technology Stack</h3>
+                    <p><strong>Frontend</strong> (React, TypeScript, Vite, Tailwind CSS) &nbsp;|&nbsp; <strong>Backend</strong> (Python, FastAPI, SQLAlchemy) &nbsp;|&nbsp; <strong>Data and search</strong> (PostgreSQL 16, pgvector, GIN full-text indexes) &nbsp;|&nbsp; <strong>AI</strong> (GPT-4o, GPT-4o mini, text-embedding-3-small) &nbsp;|&nbsp; <strong>Infrastructure</strong> (Docker, AWS CDK, CloudFront, S3, ECS Fargate, ECR, RDS, CloudWatch) &nbsp;|&nbsp; <strong>CI/CD</strong> (GitHub Actions)</p>
                     <button class="ink-link project-close" type="button" hidden>Close project <span aria-hidden="true">↑</span></button>
                 </div>
             </details>
             <details class="project-item" id="led-brightness" name="projects">
                 <summary class="project-header">
+                    <img src="/project_images/led-brightness-cover.png" alt="" loading="lazy" class="project-image">
                     <span class="project-header-text">
                         <span class="project-title">LED Brightness Peripheral</span>
                         <span class="project-date">January 2025 – May 2025</span>
-                        <span class="project-description">A pulse-width modulation peripheral for controlling LED brightness on the DE10/SCOMP platform.</span>
+                        <span class="project-description">A VHDL peripheral that lets SCOMP programs dim and animate ten LEDs on the DE10 FPGA board.</span>
                     </span>
                     <span class="project-mark" aria-hidden="true"></span>
                 </summary>
                 <div class="project-expanded" id="led-brightness-expanded">
-                    <h3>Design and testing</h3>
-                    <p>Implemented register-level brightness control and configurable display modes. Validated the design in simulation and on hardware.</p>
+                    <h3>Project Overview</h3>
+                    <p>I built an FPGA peripheral that lets a SCOMP assembly program set which LEDs light up, how bright they appear, and how they animate in a single write.</p>
+
+                    <h3>SCOMP Programming Interface</h3>
+                    <p>An <code>OUT</code> instruction to I/O address <code>0x20</code> sends the peripheral a 16-bit control word. Bits 15–12 set a shared brightness in steps of 10 percentage points from 0% to 100%, bits 11–10 select the display mode, and bits 9–0 specify the LED pattern with one bit per LED.</p>
+                    <img src="/project_images/led-brightness-control-word.png" alt="Example control word with brightness level 0111, mode 11, and LED pattern 0010010100." loading="lazy">
+
+                    <h3>Display Modes</h3>
+                    <ul class="styled-list">
+                        <li><strong>Static</strong> (<code>00</code>) holds the selected pattern at the requested brightness.</li>
+                        <li><strong>Breathing</strong> (<code>01</code>) fades the selected LEDs up to the requested brightness and back to off.</li>
+                        <li><strong>Barrel Shift</strong> (<code>10</code>) rotates the pattern left, wrapping the leftmost bit around to the right.</li>
+                        <li><strong>Pattern Inverse</strong> (<code>11</code>) flips the LED selection so the LEDs outside the original pattern light up.</li>
+                    </ul>
+
+                    <h3>Technical Implementation</h3>
+                    <p>The VHDL controller uses a gamma-correction lookup table to turn each brightness setting into an 8-bit pulse-width modulation (PWM) threshold. The correction makes the brightness steps appear more even to the eye. A counter sets how long the LEDs stay on in each PWM cycle, and the current pattern determines which LEDs receive that pulse.</p>
+
+                    <h3>Test Program</h3>
+                    <p>The SCASM test program cycles through all four modes and all eleven brightness settings. It reads the board’s slide switches to select the LED pattern and shows the current brightness level on the seven-segment display.</p>
+
+                    <h3>Technology Stack</h3>
+                    <p><strong>Hardware</strong> (DE10 board with Cyclone V FPGA) &nbsp;|&nbsp; <strong>Hardware design</strong> (VHDL) &nbsp;|&nbsp; <strong>Test program</strong> (SCOMP assembly with SCASM) &nbsp;|&nbsp; <strong>FPGA tools</strong> (Quartus Prime Lite and ModelSim) &nbsp;|&nbsp; <strong>Lookup table generation</strong> (Python)</p>
                     <button class="ink-link project-close" type="button" hidden>Close project <span aria-hidden="true">↑</span></button>
                 </div>
             </details>
